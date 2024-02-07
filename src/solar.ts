@@ -1,155 +1,159 @@
 export type UserSolarData = {
-    minPanelCount: number,
-    maxPanelCount: number,
-    panelCapacityWatts: number,
-    defaultPanelCapacityWatts: number,
-    panelCount: number,
-    installationCostPerWatt: number,
-    yearlyEnergyDcKwh: number,
-    dcToAcDerate: number,
-    averageMonthlyEnergyBill: number,
-    energyCostPerKwh: number,
-    solarIncentives: number,
-    yearlyPanelEfficiencyDecline: number,
-    yearlyEnergyCostIncrease: number,
-    yearlyDiscountRate: number,
-    installationLifespan: number
+    minPanelCount: number;
+    maxPanelCount: number;
+    panelCapacityWatts: number;
+    defaultPanelCapacityWatts: number;
+    panelCount: number;
+    installationCostPerWatt: number;
+    yearlyEnergyDcKwh: number;
+    dcToAcDerate: number;
+    averageMonthlyEnergyBill: number;
+    energyCostPerKwh: number;
+    solarIncentives: number;
+    yearlyPanelEfficiencyDecline: number;
+    yearlyEnergyCostIncrease: number;
+    yearlyDiscountRate: number;
+    installationLifespan: number;
 };
 
 export type SolarLayers = {
-    imageryDate: Date,
-    imageryProcessedDate: Date,
-    dsmUrl: string,
-    rgbUrl: string,
-    maskUrl: string,
-    annualFluxUrl: string,
-    monthlyFluxUrl: string,
-    hourlyShadeUrls: string[],
+    imageryDate: Date;
+    imageryProcessedDate: Date;
+    dsmUrl: string;
+    rgbUrl: string;
+    maskUrl: string;
+    annualFluxUrl: string;
+    monthlyFluxUrl: string;
+    hourlyShadeUrls: string[];
     imageryQuality: "HIGH" | "MEDIUM" | "LOW";
 };
 
 export type LayerId = "annualFlux" | "monthlyFlux" | "hourlyShade";
 
 export type BuildingInsights = {
-    name: string,
-    center: SolarDataCoords,
-    imageryData: Date,
-    regionCode: string,
+    name: string;
+    center: SolarDataCoords;
+    imageryData: Date;
+    regionCode: string;
     solarPotential: {
-        maxArrayPanelsCount: number,
-        maxArrayAreaMeters2: number,
-        maxSunshineHoursPerYear: number,
-        carbonOffsetFactorKgPerMwh: number,
+        maxArrayPanelsCount: number;
+        maxArrayAreaMeters2: number;
+        maxSunshineHoursPerYear: number;
+        carbonOffsetFactorKgPerMwh: number;
         wholeRoofStats: {
-            areaMeters2: number,
-            sunshineQuantiles: number[],
-            groundAreaMeters2: number
-        },
-        roofSegmentStats: RoofSegment[]
-        solarPanelConfigs: SolarPanelConfig[],
-        panelCapacityWatts: number,
-        panelHeightMeters: number,
-        panelWidthMeters: number,
-        panelLifetimeYears: number,
+            areaMeters2: number;
+            sunshineQuantiles: number[];
+            groundAreaMeters2: number;
+        };
+        roofSegmentStats: RoofSegment[];
+        solarPanelConfigs: SolarPanelConfig[];
+        panelCapacityWatts: number;
+        panelHeightMeters: number;
+        panelWidthMeters: number;
+        panelLifetimeYears: number;
         buildingStats: {
-            areaMeters2: number,
-            sunshineQuantiles: number[],
-            groundAreaMeters2: number
-        },
-        solarPanels: SolarPanel[]
-    },
-    boundingBox: BoundingBox,
-    imageryQuality: string,
-    imageryProcessedDate: Date
+            areaMeters2: number;
+            sunshineQuantiles: number[];
+            groundAreaMeters2: number;
+        };
+        solarPanels: SolarPanel[];
+    };
+    boundingBox: BoundingBox;
+    imageryQuality: string;
+    imageryProcessedDate: Date;
 };
 
 export type SolarDataCoords = {
-    latitude: number,
-    longitude: number
+    latitude: number;
+    longitude: number;
 };
 
 type Date = {
-    year: number,
-    month: number,
-    day: number
+    year: number;
+    month: number;
+    day: number;
 };
 
 type BoundingBox = {
-    sw: SolarDataCoords,
-    ne: SolarDataCoords
+    sw: SolarDataCoords;
+    ne: SolarDataCoords;
 };
 
 type RoofSegment = {
-    pitchDegrees: number,
-    azimuthDegrees: number,
+    pitchDegrees: number;
+    azimuthDegrees: number;
     stats: {
-        areaMeters2: number,
-        sunshineQuantiles: number[],
-        groundAreaMeters2: number
-    },
-    center: SolarDataCoords,
-    BoundingBox: BoundingBox
-    planeHeightAtCenterMeters: number
+        areaMeters2: number;
+        sunshineQuantiles: number[];
+        groundAreaMeters2: number;
+    };
+    center: SolarDataCoords;
+    BoundingBox: BoundingBox;
+    planeHeightAtCenterMeters: number;
 };
 
 export type SolarPanelConfig = {
-    panelsCount: number,
-    yearlyEnergyDcKwh: number,
-    RoofSegmentSummaries: RoofSegmentSummary[]
+    panelsCount: number;
+    yearlyEnergyDcKwh: number;
+    RoofSegmentSummaries: RoofSegmentSummary[];
 };
 
 type RoofSegmentSummary = {
-    pitchDegrees: number,
-    azimuthDegrees: number,
-    panelsCount: number,
-    yearlyEnergyDcKwh: number,
-    segmentIndex: number
+    pitchDegrees: number;
+    azimuthDegrees: number;
+    panelsCount: number;
+    yearlyEnergyDcKwh: number;
+    segmentIndex: number;
 };
 
 type SolarPanel = {
-    center: SolarDataCoords,
-    orientation: string,
-    yearlyEnergyDcKwh: number,
-    segmentIndex: number
+    center: SolarDataCoords;
+    orientation: string;
+    yearlyEnergyDcKwh: number;
+    segmentIndex: number;
 };
 
 export type Layer = {
-	id: LayerId;
-	render: (showRoofOnly: boolean, month: number, day: number) => HTMLCanvasElement[];
-	bounds: Bounds;
-	palette?: Palette;
-}
+    id: LayerId;
+    render: (
+        showRoofOnly: boolean,
+        month: number,
+        day: number,
+    ) => HTMLCanvasElement[];
+    bounds: Bounds;
+    palette?: Palette;
+};
 
 export type Palette = {
-	colors: string[];
-	min: string;
-	max: string;
-}
+    colors: string[];
+    min: string;
+    max: string;
+};
 
 export type Bounds = {
-	north: number;
-	south: number;
-	east: number;
-	west: number;
-}
+    north: number;
+    south: number;
+    east: number;
+    west: number;
+};
 
 export type GeoTiff = {
-	width: number;
-	height: number;
-	rasters: Array<number>[];
-	bounds: Bounds;
-}
+    width: number;
+    height: number;
+    rasters: Array<number>[];
+    bounds: Bounds;
+};
 
 export type MapSettings = {
-    layerId: LayerId,
-    layerIdChoices: SolarDataType[]
-    showPanels: boolean,
-    showHeatmap: boolean,
-    heatmapAnimation: boolean,
-    configIdIndex: number,
+    layerId: LayerId;
+    layerIdChoices: SolarDataType[];
+    showPanels: boolean;
+    showHeatmap: boolean;
+    heatmapAnimation: boolean;
+    configIdIndex: number;
 };
 
 type SolarDataType = {
-    name: "annualFlux" | "monthlyFlux" | "hourlyShade",
-    displayedName: string
+    name: "annualFlux" | "monthlyFlux" | "hourlyShade";
+    displayedName: string;
 };

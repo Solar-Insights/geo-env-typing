@@ -1,9 +1,11 @@
 {
     "name": "solar-typing",
-    "version": "1.0.0",
-    "description": "A package for solar types used in conjunction with Google API",
+    "version": "1.3.0",
+    "description": "A package for typing and value-checking of various environmental data. Based mainly on Google's APIs. ",
     "type": "module",
     "scripts": {
+        "deploy": "npm run clean && npm run build && npm publish",
+        "clean": "del /S /Q .\\dist\\*.js .\\dist\\*.d.ts > NUL",
         "build": "npm run prettier && npx tsc --project . --declaration",
         "prettier": "npx prettier --tab-width 4 -uw --cache --ignore-path .gitignore ."
     },

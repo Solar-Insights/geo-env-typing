@@ -9,6 +9,5 @@
         "outDir": "./dist"
     },
     "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx"],
-    "exclude": ["node_modules"],
-    "files": ["src/airQuality/types.ts", "src/solar/types.ts"]
+    "exclude": ["node_modules"]
 }
