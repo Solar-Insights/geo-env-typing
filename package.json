@@ -1,16 +1,16 @@
 {
-  "name": "solar-typing",
-  "version": "1.0.0",
-  "description": "A package for solar types used in conjunction with Google API",
-  "type": "module",
-  "scripts": {
-    "build": "npx tsc --project . --declaration",
-    "prettier": "npx prettier --tab-width 4 -uw --cache --ignore-path .gitignore ."
-  },
-  "author": "MathBeaudoin",
-  "types": "./dist/index.d.ts",
-  "devDependencies": {
-    "prettier": "^3.2.5",
-    "typescript": "^5.3.3"
-  }
+    "name": "solar-typing",
+    "version": "1.0.0",
+    "description": "A package for solar types used in conjunction with Google API",
+    "type": "module",
+    "scripts": {
+        "build": "npm run prettier && npx tsc --project . --declaration",
+        "prettier": "npx prettier --tab-width 4 -uw --cache --ignore-path .gitignore ."
+    },
+    "author": "MathBeaudoin",
+    "types": "./dist/index.d.ts",
+    "devDependencies": {
+        "prettier": "^3.2.5",
+        "typescript": "^5.3.3"
+    }
 }
