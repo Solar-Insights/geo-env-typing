@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "target": "ES2020",
+        "useDefineForClassFields": true,
+        "module": "ESNext",
+        "lib": ["ES2020", "DOM", "DOM.Iterable"],
+        "allowSyntheticDefaultImports": true,
+        "skipLibCheck": true,
+        "outDir": "./dist",
+    },
+    "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx"],
+    "exclude": ["node_modules"],
+    "files": ["src/airQuality/types.ts", "src/solar/types.ts"]
+}
