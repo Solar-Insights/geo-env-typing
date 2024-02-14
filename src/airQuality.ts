@@ -38,3 +38,19 @@ export type HealthRecommendations = {
     heartDiseasePopulation: string;
     lungDiseasePopulation: string;
 };
+
+// For an updated list of pollutants, visit https://developers.google.com/maps/documentation/air-quality/pollutants
+export type PollutantCode =
+    | "co"
+    | "c6h6"
+    | "ox"
+    | "o3"
+    | "nh3"
+    | "nhmc"
+    | "no"
+    | "nox"
+    | "no2"
+    | "pm25"
+    | "pm10"
+    | "so2"
+    | "trs";

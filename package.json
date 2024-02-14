@@ -1,6 +1,6 @@
 {
     "name": "solar-typing",
-    "version": "1.3.0",
+    "version": "1.3.1",
     "description": "A package for typing and value-checking of various environmental data. Based mainly on Google's APIs. ",
     "type": "module",
     "scripts": {
