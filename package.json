@@ -7,7 +7,7 @@
         "deploy": "npm run clean && npm run build && npm publish",
         "clean": "del /S /Q .\\dist\\*.js .\\dist\\*.d.ts > NUL",
         "build": "npm run prettier && npx tsc --project . --declaration",
-        "prettier": "npx prettier --tab-width 4 -uw --cache --ignore-path .gitignore ."
+        "prettier": "npx prettier --trailing-comma none --tab-width 4 --print-width 120 -uw --cache --ignore-path .gitignore ."
     },
     "author": "MathBeaudoin",
     "types": "./dist/index.d.ts",
