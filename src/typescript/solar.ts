@@ -68,18 +68,18 @@ export type SolarDataCoords = {
     longitude: number;
 };
 
-type Date = {
+export type Date = {
     year: number;
     month: number;
     day: number;
 };
 
-type BoundingBox = {
+export type BoundingBox = {
     sw: SolarDataCoords;
     ne: SolarDataCoords;
 };
 
-type RoofSegment = {
+export type RoofSegment = {
     pitchDegrees: number;
     azimuthDegrees: number;
     stats: {
@@ -98,7 +98,7 @@ export type SolarPanelConfig = {
     RoofSegmentSummaries: RoofSegmentSummary[];
 };
 
-type RoofSegmentSummary = {
+export type RoofSegmentSummary = {
     pitchDegrees: number;
     azimuthDegrees: number;
     panelsCount: number;
@@ -106,7 +106,7 @@ type RoofSegmentSummary = {
     segmentIndex: number;
 };
 
-type SolarPanel = {
+export type SolarPanel = {
     center: SolarDataCoords;
     orientation: string;
     yearlyEnergyDcKwh: number;
@@ -115,11 +115,7 @@ type SolarPanel = {
 
 export type Layer = {
     id: LayerId;
-    render: (
-        showRoofOnly: boolean,
-        month: number,
-        day: number,
-    ) => HTMLCanvasElement[];
+    render: (showRoofOnly: boolean, month: number, day: number) => HTMLCanvasElement[];
     bounds: Bounds;
     palette?: Palette;
 };
@@ -153,7 +149,7 @@ export type MapSettings = {
     configIdIndex: number;
 };
 
-type SolarDataType = {
+export type SolarDataType = {
     name: "annualFlux" | "monthlyFlux" | "hourlyShade";
-    displayedName: string;
+    displayedName: string; // Anything you would want to be displayed to a user
 };

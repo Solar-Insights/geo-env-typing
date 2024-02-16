@@ -11,7 +11,7 @@ export function validCoordinates(coord: Coordinates) {
 
     if (!(respectLimits && notNull && notNaN)) {
         console.log(
-            `the coordinates (lat: ${coord.lat}, lng: ${coord.lng}) do not respect the template of coordinates`,
+            `the coordinates (lat: ${coord.lat}, lng: ${coord.lng}) do not respect the template of coordinates`
         );
     }
     return respectLimits && notNull && notNaN;
