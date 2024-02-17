@@ -70,3 +70,4 @@ describe("coordinatesAreNumbers function", () => {
         assert.isFalse(coordinatesAreNumbers({ lat: NaN as any, lng: NaN as any }));
     });
 });
+
