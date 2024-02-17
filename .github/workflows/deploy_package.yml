@@ -8,7 +8,7 @@ on:
     
 jobs:
   build:
-    if: contains(github.event.head_commit.message, '[MAJOR]') || contains(github.event.head_commit.message, '[MINOR]') || contains(github.event.head_commit.message, '[PATCH]')
+    if: contains(github.event.head_commit.message, '[major]') || contains(github.event.head_commit.message, '[minor]') || contains(github.event.head_commit.message, '[patch]')
     runs-on: windows-latest
     timeout-minutes: 5
 
@@ -33,6 +33,17 @@ jobs:
         working-directory: .\typescript
         run: npm test
 
-      - name: Run tests
-        id: version
-        run: npm test
+      - name: Increment version
+        working-directory: .\typescript
+        run: |
+          $commit_message=(git log --format=%B -n 1 $env:GITHUB_SHA)
+          $type="major"
+          if ($commit_message -match "[major]") {
+            $type="major"
+          } elseif ($commit_message -match "[minor]") {
+            $type="minor"
+          } else {
+            $type="patch"
+          }
+          echo $type
+          
