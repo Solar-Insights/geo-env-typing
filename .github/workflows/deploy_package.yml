@@ -33,7 +33,7 @@ jobs:
         working-directory: .\typescript
         run: npm test
 
-        
+
   deploying-package:
     if: success()
     needs: [testing-env]
@@ -52,6 +52,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+          registry-url: 'https://registry.npmjs.org'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install dependencies
         working-directory: .\typescript
@@ -71,9 +73,14 @@ jobs:
           }
           
           npm version $type
+          git commit --all -m "[Automated commit] - $type release generated"
+      
+      - name: Publish package
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: 
           npm publish
 
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git commit --all -m "[Automated commit] - $type release generated"
-          git push        
+      - name: Push commited changes
+        run: 
+          git push  

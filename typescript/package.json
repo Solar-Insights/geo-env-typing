@@ -4,6 +4,10 @@
     "description": "A package aimed to provide types, classes and data-validators for geographic, solar, and air-quality-data. Currently supporting TypeScript ",
     "type": "module",
     "author": "MathBeaudoin",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/MathBeaudoin/geo-env-typing.git"
+      },
     "scripts": {
         "build": "npm run test && npm run prettier && npm run clean && npm run build:esm && npm run build:cjs",
         "test": "vitest run",
