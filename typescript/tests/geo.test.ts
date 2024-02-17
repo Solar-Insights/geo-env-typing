@@ -55,18 +55,18 @@ describe("lngRespectsRange function", () => {
 
 describe("coordinatesAreNumbers function", () => {
     it("should be true if coordinates are numbers", () => {
-        assert.isTrue(coordinatesAreNumbers({lat: 50, lng: 50}))
+        assert.isTrue(coordinatesAreNumbers({ lat: 50, lng: 50 }));
     });
 
     it("should be false if coordinates are undefined", () => {
-        assert.isFalse(coordinatesAreNumbers({lat: undefined as any, lng: undefined as any}))
+        assert.isFalse(coordinatesAreNumbers({ lat: undefined as any, lng: undefined as any }));
     });
 
     it("should be false if coordinates are null / objects", () => {
-        assert.isFalse(coordinatesAreNumbers({lat: null as any, lng: null as any}))
+        assert.isFalse(coordinatesAreNumbers({ lat: null as any, lng: null as any }));
     });
 
     it("should be false if coordinates are NaN", () => {
-        assert.isFalse(coordinatesAreNumbers({ lat: NaN as any, lng: NaN as any}))
+        assert.isFalse(coordinatesAreNumbers({ lat: NaN as any, lng: NaN as any }));
     });
 });
