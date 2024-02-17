@@ -36,14 +36,21 @@ jobs:
       - name: Increment version
         working-directory: .\typescript
         run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
           $commit_message=(git log --format=%B -n 1 $env:GITHUB_SHA)
-          $type="major"
-          if ($commit_message -match "[major]") {
-            $type="major"
-          } elseif ($commit_message -match "[minor]") {
-            $type="minor"
+          $type = ""
+          if ($commit_message -match "\[major\]") {
+            $type = "major"
+          } elseif ($commit_message -match "\[minor\]") {
+            $type = "minor"
           } else {
-            $type="patch"
+            $type = "patch"
           }
-          echo $type
+           
+          npm version $type
+          npm publish
+          git commit --all -m "[Automated commit] - $type release generated"
+          git push
           
