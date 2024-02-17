@@ -54,9 +54,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          registry-url: 'https://registry.npmjs.org'
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Install dependencies
         working-directory: .\typescript
@@ -82,10 +79,15 @@ jobs:
       
       - name: Publish package
         working-directory: .\typescript
+        env: 
+          registry-url: 'https://registry.npmjs.org'
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: 
           npm publish
 
       - name: Push commited changes
         working-directory: .\typescript
+        env: 
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
         run: 
           git push  
