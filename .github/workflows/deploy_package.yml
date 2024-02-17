@@ -36,4 +36,3 @@ jobs:
       - name: Run tests
         id: version
         run: npm test
-          
