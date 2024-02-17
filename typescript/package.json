@@ -1,6 +1,6 @@
 {
     "name": "geo-env-typing",
-    "version": "1.0.7",
+    "version": "1.0.9",
     "description": "A package aimed to provide types, classes and data-validators for geographic, solar, and air-quality-data. Currently supporting TypeScript ",
     "keywords": [
         "solar",
@@ -24,14 +24,34 @@
         "prepack": "npm run build"
     },
     "exports": {
-        ".": {
+        "./air": {
             "import": {
-                "types": "./dist/esm/types/index.d.ts",
-                "default": "./dist/esm/index.mjs"
+                "types": "./dist/esm/types/air.d.ts",
+                "default": "./dist/esm/air.mjs"
             },
             "require": {
-                "types": "./dist/cjs/types/index.d.ts",
-                "default": "./dist/cjs/index.js"
+                "types": "./dist/cjs/types/air.d.ts",
+                "default": "./dist/cjs/air.js"
+            }
+        },
+        "./solar": {
+            "import": {
+                "types": "./dist/esm/types/solar.d.ts",
+                "default": "./dist/esm/solar.mjs"
+            },
+            "require": {
+                "types": "./dist/cjs/types/air.d.ts",
+                "default": "./dist/cjs/air.js"
+            }
+        },
+        "./geo": {
+            "import": {
+                "types": "./dist/esm/types/geo.d.ts",
+                "default": "./dist/esm/geo.mjs"
+            },
+            "require": {
+                "types": "./dist/cjs/types/geo.d.ts",
+                "default": "./dist/cjs/geo.js"
             }
         }
     },
