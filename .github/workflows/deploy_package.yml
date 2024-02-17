@@ -81,9 +81,11 @@ jobs:
           git commit --all -m "[Automated commit] - $type release generated"
       
       - name: Publish package
+        working-directory: .\typescript
         run: 
           npm publish
 
       - name: Push commited changes
+        working-directory: .\typescript
         run: 
           git push  
