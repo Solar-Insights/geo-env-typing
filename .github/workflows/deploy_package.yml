@@ -73,6 +73,8 @@ jobs:
           }
           
           npm version $type
+          git config --global user.email "github_action@github.com"
+          git config --global user.name "github_robot"
           git commit --all -m "[Automated commit] - $type release generated"
       
       - name: Publish package
