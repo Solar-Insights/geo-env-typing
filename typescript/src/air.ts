@@ -16,7 +16,7 @@ export type Aqi = {
 };
 
 export type AirPollutant = {
-    code: string;
+    code: PollutantCode;
     displayName: string;
     fullName: string;
     additionalInfo: {
