@@ -17,7 +17,7 @@
     "scripts": {
         "build": "npm run test && npm run prettier && npm run clean && npm run build:esm && npm run build:cjs",
         "test": "vitest run",
-        "prettier": "npx prettier --trailing-comma none --tab-width 4 --print-width 120 -uw --cache --ignore-path .gitignore .",
+        "prettier": "prettier --trailing-comma none --tab-width 4 --print-width 120 -uw --cache --ignore-path .gitignore .",
         "clean": "if exist .\\dist rmdir /S /Q .\\dist",
         "build:esm": "tsc -p .\\tsconfig.esm.json && cd .\\dist\\esm && ren *.js *.mjs && cd ..\\..\\",
         "build:cjs": "tsc -p .\\tsconfig.cjs.json",
