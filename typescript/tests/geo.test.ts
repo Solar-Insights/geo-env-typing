@@ -1,72 +1,88 @@
-import { describe, it, assert } from "vitest";
-import { latRespectsRange, lngRespectsRange, coordinatesAreNumbers } from "../src/geo";
+import { describe, test, assert } from "vitest";
+import { latRespectsRange, lngRespectsRange, coordinatesAreNumbers, Coordinates } from "../src/geo";
 
-describe("latRespectsRange function", () => {
-    it("should be true when lat is negative, but higher than -90", () => {
-        assert.isTrue(latRespectsRange(-50));
+describe("function: latRespectsRange(lat: number)", () => {
+    const NEGATIVE_IN_RANGE = -80;
+    const NEGATIVE_LIMIT = -90;
+    const NEGATIVE_OUT_RANGE = -100;
+    test("should return true when lat is negative (but higher than -90)", () => {
+        assert.isTrue(latRespectsRange(NEGATIVE_IN_RANGE));
     });
 
-    it("should be true when lat is on the negative limit", () => {
-        assert.isTrue(latRespectsRange(-90));
+    test("should return true when lat is -90 (the negative limit)", () => {
+        assert.isTrue(latRespectsRange(NEGATIVE_LIMIT));
     });
 
-    it("should be true when lat is positive, but lower than 90", () => {
-        assert.isTrue(latRespectsRange(42));
+    test("should return false when lat is negative (but lower than -90)", () => {
+        assert.isFalse(latRespectsRange(NEGATIVE_OUT_RANGE));
     });
 
-    it("should be true when lat is on the positive limit", () => {
-        assert.isTrue(latRespectsRange(90));
+    const POSITIVE_IN_RANGE = 80;
+    const POSITIVE_LIMIT = 90;
+    const POSITIVE_OUT_RANGE = 100;
+    test("should return true when lat is positive (but lower than 90)", () => {
+        assert.isTrue(latRespectsRange(POSITIVE_IN_RANGE));
     });
 
-    it("should be false when lat is lower than -90", () => {
-        assert.isFalse(latRespectsRange(-90.1));
+    test("should return true when lat is 90 (the positive limit)", () => {
+        assert.isTrue(latRespectsRange(POSITIVE_LIMIT));
     });
 
-    it("should be false when lat is higher than 90", () => {
-        assert.isFalse(latRespectsRange(100));
-    });
-});
-
-describe("lngRespectsRange function", () => {
-    it("should be true when lng is negative, but higher than -180", () => {
-        assert.isTrue(lngRespectsRange(-120));
-    });
-
-    it("should be true when lng is on the negative limit", () => {
-        assert.isTrue(lngRespectsRange(-180));
-    });
-
-    it("should be true when lng is positive, but lower than 180", () => {
-        assert.isTrue(lngRespectsRange(57));
-    });
-
-    it("should be false when lng is on the positive limit", () => {
-        assert.isTrue(lngRespectsRange(180));
-    });
-
-    it("should be false when lng is lower than -180", () => {
-        assert.isFalse(lngRespectsRange(-180.1));
-    });
-
-    it("should be false when lng is higher than 180", () => {
-        assert.isFalse(lngRespectsRange(180.1));
+    test("should return false when lat is positive (but higher than 90)", () => {
+        assert.isFalse(latRespectsRange(POSITIVE_OUT_RANGE));
     });
 });
 
-describe("coordinatesAreNumbers function", () => {
-    it("should be true if coordinates are numbers", () => {
-        assert.isTrue(coordinatesAreNumbers({ lat: 50, lng: 50 }));
+describe("function: lngRespectsRange(lng: number)", () => {
+    const NEGATIVE_IN_RANGE = -160;
+    const NEGATIVE_LIMIT = -180;
+    const NEGATIVE_OUT_RANGE = -200;
+    test("should return true when lng is negative (but higher than -180)", () => {
+        assert.isTrue(lngRespectsRange(NEGATIVE_IN_RANGE));
     });
 
-    it("should be false if coordinates are undefined", () => {
-        assert.isFalse(coordinatesAreNumbers({ lat: undefined as any, lng: undefined as any }));
+    test("should return true when lng is -180 (the negative limit)", () => {
+        assert.isTrue(lngRespectsRange(NEGATIVE_LIMIT));
     });
 
-    it("should be false if coordinates are null / objects", () => {
-        assert.isFalse(coordinatesAreNumbers({ lat: null as any, lng: null as any }));
+    test("should return false when lng is negative (but lower than -180)", () => {
+        assert.isFalse(lngRespectsRange(NEGATIVE_OUT_RANGE));
     });
 
-    it("should be false if coordinates are NaN", () => {
-        assert.isFalse(coordinatesAreNumbers({ lat: NaN as any, lng: NaN as any }));
+    const POSITIVE_IN_RANGE = 160;
+    const POSITIVE_LIMIT = 180;
+    const POSITIVE_OUT_RANGE = 200;
+    test("should return true when lng is positive (but lower than 180)", () => {
+        assert.isTrue(lngRespectsRange(POSITIVE_IN_RANGE));
+    });
+
+    test("should return true when lng is 180 (the positive limit)", () => {
+        assert.isTrue(lngRespectsRange(POSITIVE_LIMIT));
+    });
+
+    test("should return false when lng is positive (but higher than 180)", () => {
+        assert.isFalse(lngRespectsRange(POSITIVE_OUT_RANGE));
+    });
+});
+
+describe("function: coordinatesAreNumbers(coordinates: Coordinates)", () => {
+    const NUMBERS_COORDINATES = { lat: 50, lng: 50 } as Coordinates;
+    test("should return true if coordinates are numbers", () => {
+        assert.isTrue(coordinatesAreNumbers(NUMBERS_COORDINATES));
+    });
+
+    const UNDEFINED_COORDINATES = { lat: undefined, lng: undefined } as any as Coordinates;
+    test("should return false if coordinates are undefined", () => {
+        assert.isFalse(coordinatesAreNumbers(UNDEFINED_COORDINATES));
+    });
+
+    const NULL_COORDINATES = { lat: null, lng: null } as any as Coordinates;
+    test("should return false if coordinates are null / objects", () => {
+        assert.isFalse(coordinatesAreNumbers(NULL_COORDINATES));
+    });
+
+    const NAN_COORDINATES = { lat: NaN, lng: NaN } as any as Coordinates;
+    test("should return false if coordinates are NaN", () => {
+        assert.isFalse(coordinatesAreNumbers(NAN_COORDINATES));
     });
 });
