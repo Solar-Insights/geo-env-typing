@@ -1,5 +1,5 @@
 export type AirQualityData = {
-    DateTime: Date;
+    dateTime: Date;
     healthRecommendations: HealthRecommendations;
     indexes: Aqi[];
     pollutants: AirPollutant[];
