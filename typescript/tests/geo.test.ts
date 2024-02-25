@@ -67,7 +67,7 @@ describe("function: lngRespectsRange(lng: number)", () => {
 
 describe("function: coordinatesAreNumbers(coordinates: Coordinates)", () => {
     const NUMBERS_COORDINATES = { lat: 50, lng: 50 } as Coordinates;
-    test("When coordinates are numbers, then return true if ", () => {
+    test("When coordinates are numbers, then return true", () => {
         assert.isTrue(coordinatesAreNumbers(NUMBERS_COORDINATES));
     });
 
