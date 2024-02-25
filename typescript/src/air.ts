@@ -1,3 +1,7 @@
+import { UtilGenerator } from "./dummyGenerators/utilGenerators"
+import { StringGenerator } from "./dummyGenerators/stringGenerator";
+import { NumberGenerator } from "./dummyGenerators/numberGenerator";
+
 export type AirQualityData = {
     dateTime: Date;
     healthRecommendations: HealthRecommendations;
@@ -5,6 +9,16 @@ export type AirQualityData = {
     pollutants: AirPollutant[];
     regionCode: string;
 };
+
+export function dummyAirQualityData() {
+    return {
+        dateTime: UtilGenerator.generateDate(),
+        healthRecommendations: dummyHealthRecommendations(),
+        indexes: UtilGenerator.generateMultiple(dummyAqi, 5),
+        pollutants: UtilGenerator.generateMultiple(dummyAirPollutant, 5),
+        regionCode: StringGenerator.generateWord(),
+    } as AirQualityData;
+}
 
 export type Aqi = {
     aqi: number;
@@ -14,6 +28,16 @@ export type Aqi = {
     category: string;
     dominantPollutant: string;
 };
+
+export function dummyAqi() {
+    return {
+        aqi: NumberGenerator.generateInt(10),
+        aqiDisplay: StringGenerator.generateWord(),
+        code: StringGenerator.generateWord(),
+        displayName: StringGenerator.generateWord(),
+        dominantPollutant: StringGenerator.generateWord()
+    } as Aqi
+}
 
 export type AirPollutant = {
     code: PollutantCode;
@@ -29,6 +53,22 @@ export type AirPollutant = {
     };
 };
 
+export function dummyAirPollutant() {
+    return {
+        code: dummyPollutantCode(),
+        displayName: StringGenerator.generateWord(),
+        fullName: StringGenerator.generateWord(),
+        additionalInfo: {
+            effects: StringGenerator.generateWord(),
+            sources: StringGenerator.generateWord()
+        },
+        concentration: {
+            units: StringGenerator.generateWord(),
+            value: NumberGenerator.generateDouble(100, 0),
+        },
+    } as AirPollutant;
+};
+
 export type HealthRecommendations = {
     generalPopulation: string;
     children: string;
@@ -38,6 +78,18 @@ export type HealthRecommendations = {
     heartDiseasePopulation: string;
     lungDiseasePopulation: string;
 };
+
+export function dummyHealthRecommendations() {
+    return {
+        generalPopulation: StringGenerator.generateWord(),
+        children: StringGenerator.generateWord(),
+        elderly: StringGenerator.generateWord(),
+        athletes: StringGenerator.generateWord(),
+        pregnantWomen: StringGenerator.generateWord(),
+        heartDiseasePopulation: StringGenerator.generateWord(),
+        lungDiseasePopulation: StringGenerator.generateWord()
+    } as HealthRecommendations;
+}
 
 // For an updated list of pollutants, visit https://developers.google.com/maps/documentation/air-quality/pollutants
 export type PollutantCode =
@@ -54,3 +106,7 @@ export type PollutantCode =
     | "pm10"
     | "so2"
     | "trs";
+
+export function dummyPollutantCode() {
+    return StringGenerator.generateWord() as PollutantCode;
+}
