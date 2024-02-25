@@ -1,7 +1,11 @@
 import { NumberGenerator } from "./numberGenerator";
 
-class UtilGenerator {
+export class UtilGenerator {
     private constructor() {}
+
+    static generateMultiple<T>(func: () => T, count: number) {
+        return Array.from({ length: count }, () => func());
+    }
 
     static generateDate() {
         const year = NumberGenerator.generateInt(0, 2100);
