@@ -3,6 +3,14 @@ import { faker } from "@faker-js/faker";
 export class StringGenerator {
     private constructor() {};
 
+    static generateWord() {
+        return faker.word.sample();
+    }
+
+    static generateSentence() {
+        return faker.hacker.phrase();
+    }
+
     static generateFromChoices(array: String[]) {
         return array[Math.floor(Math.random() * array.length)];
     }
@@ -13,9 +21,5 @@ export class StringGenerator {
 
     static generateUuid() {
         return faker.string.uuid();
-    }
-
-    static generateSentences() {
-        return faker.hacker.phrase();
     }
 }
