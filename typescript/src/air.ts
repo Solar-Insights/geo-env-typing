@@ -14,8 +14,8 @@ export function dummyAirQualityData() {
     return {
         dateTime: UtilGenerator.generateDate(),
         healthRecommendations: dummyHealthRecommendations(),
-        indexes: UtilGenerator.generateMultiple(dummyAqi, 5),
-        pollutants: UtilGenerator.generateMultiple(dummyAirPollutant, 5),
+        indexes: UtilGenerator.generateMultipleObjects(dummyAqi, 5),
+        pollutants: UtilGenerator.generateMultipleObjects(dummyAirPollutant, 5),
         regionCode: StringGenerator.generateWord(),
     } as AirQualityData;
 }
@@ -93,20 +93,36 @@ export function dummyHealthRecommendations() {
 
 // For an updated list of pollutants, visit https://developers.google.com/maps/documentation/air-quality/pollutants
 export type PollutantCode =
-    | "co"
-    | "c6h6"
-    | "ox"
-    | "o3"
-    | "nh3"
-    | "nhmc"
-    | "no"
-    | "nox"
-    | "no2"
-    | "pm25"
-    | "pm10"
-    | "so2"
-    | "trs";
+    "co" |
+    "c6h6" |
+    "ox" |
+    "o3" |
+    "nh3" |
+    "nhmc" |
+    "no" |
+    "nox" |
+    "no2" |
+    "pm25" |
+    "pm10" |
+    "so2" |
+    "trs";
+
+export const pollutantCodes: PollutantCode[] = [
+    "co",
+    "c6h6",
+    "ox",
+    "o3",
+    "nh3",
+    "nhmc",
+    "no",
+    "nox",
+    "no2",
+    "pm25",
+    "pm10",
+    "so2",
+    "trs"
+];
 
 export function dummyPollutantCode() {
-    return StringGenerator.generateWord() as PollutantCode;
-}
+    return UtilGenerator.chooseRandomObjectFromList(pollutantCodes);
+};

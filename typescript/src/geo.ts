@@ -1,6 +1,16 @@
+import { UtilGenerator } from "./dummyGenerators/utilGenerators"
+import { NumberGenerator } from "./dummyGenerators/numberGenerator";
+
 export type Coordinates = {
     lat: number;
     lng: number;
+};
+
+export function dummyCoordinates() {
+    return {
+        lat: NumberGenerator.generateDouble(90, -90),
+        lng: NumberGenerator.generateDouble(180, -180)
+    } as Coordinates;
 };
 
 export function validCoordinates(coord: Coordinates) {
@@ -24,3 +34,9 @@ export function coordinatesAreNumbers(coord: Coordinates) {
 }
 
 export type MapType = "AIR_QUALITY" | "SOLAR";
+
+export const mapTypes: MapType[] = ["AIR_QUALITY", "SOLAR"];
+
+export function dummyMapType() {
+    return UtilGenerator.chooseRandomObjectFromList(mapTypes);
+}
