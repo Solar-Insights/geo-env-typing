@@ -1,5 +1,5 @@
 import { describe, test, assert } from "vitest";
-import { latRespectsRange, lngRespectsRange, coordinatesAreNumbers, Coordinates } from "../src/geo";
+import { latRespectsRange, lngRespectsRange, coordinatesAreNumbers, LatLng } from "../src/geo";
 
 describe("function: latRespectsRange(lat: number)", () => {
     const NEGATIVE_IN_RANGE = -80;
@@ -66,23 +66,23 @@ describe("function: lngRespectsRange(lng: number)", () => {
 });
 
 describe("function: coordinatesAreNumbers(coordinates: Coordinates)", () => {
-    const NUMBERS_COORDINATES = { lat: 50, lng: 50 } as Coordinates;
+    const NUMBERS_COORDINATES = { lat: 50, lng: 50 } as LatLng;
     test("When coordinates are numbers, then return true", () => {
-        assert.isTrue(coordinatesAreNumbers(NUMBERS_COORDINATES));
+        assert.isTrue(coordinatesAreNumbers(NUMBERS_COORDINATES.lat, NUMBERS_COORDINATES.lng));
     });
 
-    const UNDEFINED_COORDINATES = { lat: undefined, lng: undefined } as any as Coordinates;
+    const UNDEFINED_COORDINATES = { lat: 10, lng: undefined } as any as LatLng;
     test("When coordinates are undefined, then returns false", () => {
-        assert.isFalse(coordinatesAreNumbers(UNDEFINED_COORDINATES));
+        assert.isFalse(coordinatesAreNumbers(UNDEFINED_COORDINATES.lat, UNDEFINED_COORDINATES.lng));
     });
 
-    const NULL_COORDINATES = { lat: null, lng: null } as any as Coordinates;
+    const NULL_COORDINATES = { lat: null, lng: 10 } as any as LatLng;
     test("When coordinates are null / objects. then returns false", () => {
-        assert.isFalse(coordinatesAreNumbers(NULL_COORDINATES));
+        assert.isFalse(coordinatesAreNumbers(NULL_COORDINATES.lat, NULL_COORDINATES.lng));
     });
 
-    const NAN_COORDINATES = { lat: NaN, lng: NaN } as any as Coordinates;
+    const NAN_COORDINATES = { lat: 5, lng: NaN } as any as LatLng;
     test("When coordinates are NaN, then returns false", () => {
-        assert.isFalse(coordinatesAreNumbers(NAN_COORDINATES));
+        assert.isFalse(coordinatesAreNumbers(NAN_COORDINATES.lat, NAN_COORDINATES.lng));
     });
 });

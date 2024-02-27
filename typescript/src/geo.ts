@@ -1,24 +1,74 @@
 import { UtilGenerator } from "./dummyGenerators/utilGenerators"
 import { NumberGenerator } from "./dummyGenerators/numberGenerator";
 
-export type Coordinates = {
+export type Coordinates = LatLng | LatitudeLongitude | Cartesian;
+
+export function dummyLat() {
+    return NumberGenerator.generateDouble(90, -90);
+}
+
+export function dummyLng() {
+    return NumberGenerator.generateDouble(180, -180);
+}
+
+export type LatLng = {
     lat: number;
     lng: number;
 };
 
-export function dummyCoordinates() {
+export function dummyLatLng() {
     return {
-        lat: NumberGenerator.generateDouble(90, -90),
-        lng: NumberGenerator.generateDouble(180, -180)
-    } as Coordinates;
+        lat: dummyLat(),
+        lng: dummyLng()
+    } as LatLng;
 };
 
-export function validCoordinates(coord: Coordinates) {
-    return coordinatesRespectRange(coord) && coordinatesAreNumbers(coord);
+export type LatitudeLongitude = {
+    latitude: number;
+    longitude: number;
+};
+
+export function dummyLatitudeLongitude() {
+    return {
+        latitude: dummyLat(),
+        longitude: dummyLng()
+    } as LatitudeLongitude;
+};
+
+export type Cartesian = {
+    y: number,
+    x: number
+};
+
+export function dummyCartesian() {
+    return {
+        x: dummyLat(),
+        y: dummyLng()
+    } as Cartesian
 }
 
-export function coordinatesRespectRange(coord: Coordinates) {
-    return latRespectsRange(coord.lat) && lngRespectsRange(coord.lng);
+export function validCoordinates(coord: Coordinates) {
+    let lat: number;
+    let lng: number;
+
+    if ("lat" in coord) {
+        lat = coord.lat;
+        lng = coord.lng;
+    } else if ("latitude" in coord) {
+        lat = coord.latitude;
+        lng = coord.longitude
+    } else if ("x" in coord) {
+        lat = coord.y;
+        lng = coord.x;
+    } else {
+        return false;
+    }
+
+    return coordinatesRespectRange(lat, lng) && coordinatesAreNumbers(lat, lng);
+}
+
+export function coordinatesRespectRange(lat: number, lng: number) {
+    return latRespectsRange(lat) && lngRespectsRange(lng);
 }
 
 export function latRespectsRange(lat: number) {
@@ -29,8 +79,8 @@ export function lngRespectsRange(lng: number) {
     return lng >= -180.0 && lng <= 180.0;
 }
 
-export function coordinatesAreNumbers(coord: Coordinates) {
-    return typeof coord.lat === "number" && typeof coord.lng === "number" && !isNaN(coord.lng) && !isNaN(coord.lat);
+export function coordinatesAreNumbers(lat: number, lng: number) {
+    return typeof lat === "number" && typeof lng === "number" && !isNaN(lng) && !isNaN(lat);
 }
 
 export type MapType = "AIR_QUALITY" | "SOLAR";
