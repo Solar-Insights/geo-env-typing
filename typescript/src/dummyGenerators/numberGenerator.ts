@@ -1,19 +1,19 @@
 export class NumberGenerator {
     private constructor() {}
 
-    static generateInt(max: number, min?: number) {
-        if (min === undefined) {
-            return Math.floor(Math.random() * max);
+    static generateInt(excludedMax: number, includedMin?: number) {
+        if (includedMin === undefined) {
+            return Math.floor(Math.random() * excludedMax);
         } else {
-            return Math.floor(Math.random() * (max - min) + min);
+            return Math.floor(Math.random() * (excludedMax - includedMin) + includedMin);
         }
     }
 
-    static generateDouble(max: number, min?: number) {
-        if (min === undefined) {
-            return Math.random() * max;
+    static generateDouble(includedMax: number, includedMin?: number) {
+        if (includedMin === undefined) {
+            return Math.random() * includedMax;
         } else {
-            return Math.random() * (max - min) + min;
+            return Math.random() * (includedMax - includedMin) + includedMin;
         }
     }
 
