@@ -10,16 +10,4 @@ export class StringGenerator {
     static generateSentence() {
         return faker.hacker.phrase();
     }
-
-    static generateFromChoices(array: String[]) {
-        return array[Math.floor(Math.random() * array.length)];
-    }
-
-    static generateEmail() {
-        return faker.internet.email();
-    }
-
-    static generateUuid() {
-        return faker.string.uuid();
-    }
 }

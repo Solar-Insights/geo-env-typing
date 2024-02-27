@@ -3,7 +3,12 @@ import { NumberGenerator } from "./numberGenerator";
 export class UtilGenerator {
     private constructor() {}
 
-    static generateMultiple<T>(func: () => T, count: number) {
+    static chooseRandomObjectFromList<T>(listOfObjects: T[]) {
+        const randomIndex = NumberGenerator.generateInt(listOfObjects.length);
+        return listOfObjects[randomIndex];
+    }
+
+    static generateMultipleObjects<T>(func: () => T, count: number) {
         return Array.from({ length: count }, () => func());
     }
 
