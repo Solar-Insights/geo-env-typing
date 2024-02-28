@@ -1,5 +1,5 @@
 import { describe, test, assert } from "vitest";
-import { latRespectsRange, lngRespectsRange, coordinatesAreNumbers, LatLng } from "../../src/googleApis/geo";
+import { latRespectsRange, lngRespectsRange, coordinatesAreNumbers, LatLng } from "../src/geo";
 
 describe("function: latRespectsRange(lat: number)", () => {
     const NEGATIVE_IN_RANGE = -80;

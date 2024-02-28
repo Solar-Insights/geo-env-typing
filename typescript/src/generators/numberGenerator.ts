@@ -25,11 +25,22 @@ export class NumberGenerator {
         return NumberGenerator.generateDouble(180, -180);
     }
 
-    static generateListOfNumbers(func: (max: number, min: number | undefined) => number, count: number, max: number, min?: number) {
+    static generateListOfNumbers(
+        func: (max: number, min: number | undefined) => number,
+        count: number,
+        max: number,
+        min?: number
+    ) {
         return Array.from({ length: count }, () => func(max, min));
     }
 
-    static generate2DListOfNumbers(func: (max: number, min: number | undefined) => number, rows: number, cols: number, max: number, min?: number) {
+    static generate2DListOfNumbers(
+        func: (max: number, min: number | undefined) => number,
+        rows: number,
+        cols: number,
+        max: number,
+        min?: number
+    ) {
         let twoDimensionsList: number[][] = [];
         for (let i = 0; i < rows; i++) {
             const row = NumberGenerator.generateListOfNumbers(func, cols, max, min);

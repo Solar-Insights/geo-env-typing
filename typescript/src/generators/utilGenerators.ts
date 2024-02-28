@@ -20,7 +20,7 @@ export class UtilGenerator {
     }
 
     static generateBoolean() {
-        return NumberGenerator.generateDouble(1) > 0.5; 
+        return NumberGenerator.generateDouble(1) > 0.5;
     }
 
     static generateHTMLCanvasElement() {

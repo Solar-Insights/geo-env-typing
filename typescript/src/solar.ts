@@ -37,17 +37,13 @@ export function dummyUserSolarData() {
         yearlyPanelEfficiencyDecline: NumberGenerator.generateDouble(100, 0),
         yearlyEnergyCostIncrease: NumberGenerator.generateDouble(100, 0),
         yearlyDiscountRate: NumberGenerator.generateDouble(100, 0),
-        installationLifespan: NumberGenerator.generateInt(100, 0),
+        installationLifespan: NumberGenerator.generateInt(100, 0)
     } as UserSolarData;
 }
 
 export type ImageryQuality = "HIGH" | "MEDIUM" | "LOW";
 
-export const imageryQualities: ImageryQuality[] = [
-    "HIGH",
-    "MEDIUM",
-    "LOW"
-];
+export const imageryQualities: ImageryQuality[] = ["HIGH", "MEDIUM", "LOW"];
 
 export function dummyImageryQuality() {
     return UtilGenerator.chooseRandomObjectFromList(imageryQualities);
@@ -75,7 +71,7 @@ export function dummySolarLayers() {
         annualFluxUrl: StringGenerator.generateUrl(),
         monthlyFluxUrl: StringGenerator.generateUrl(),
         hourlyShadeUrls: UtilGenerator.generateMultipleObjects(StringGenerator.generateUrl, 10),
-        imageryQuality: dummyImageryQuality(),
+        imageryQuality: dummyImageryQuality()
     } as SolarLayers;
 }
 
@@ -123,7 +119,7 @@ export function dummyBuildingInsights() {
             panelWidthMeters: NumberGenerator.generateDouble(3, 0.5),
             panelLifetimeYears: NumberGenerator.generateInt(30, 0),
             buildingStats: dummyRoofStats(),
-            solarPanels: UtilGenerator.generateMultipleObjects(dummySolarPanel, 50),
+            solarPanels: UtilGenerator.generateMultipleObjects(dummySolarPanel, 50)
         },
         boundingBox: dummyBoundingBox(),
         imageryQuality: dummyImageryQuality(),
@@ -141,7 +137,7 @@ export function dummyDate() {
     return {
         year: NumberGenerator.generateInt(3000, 0),
         month: NumberGenerator.generateInt(13, 1),
-        day: NumberGenerator.generateInt(32, 1),
+        day: NumberGenerator.generateInt(32, 1)
     } as Date;
 }
 
@@ -219,7 +215,7 @@ export function dummyRoofSegmentSummary() {
         azimuthDegrees: NumberGenerator.generateDouble(360, 0),
         panelsCount: NumberGenerator.generateInt(0, 200),
         yearlyEnergyDcKwh: NumberGenerator.generateDouble(10000),
-        segmentIndex: NumberGenerator.generateInt(10, 0),
+        segmentIndex: NumberGenerator.generateInt(10, 0)
     } as RoofSegmentSummary;
 }
 
@@ -281,7 +277,7 @@ export function dummyBounds() {
         north: NumberGenerator.generateDouble(90, -90),
         south: NumberGenerator.generateDouble(90, -90),
         east: NumberGenerator.generateDouble(180, -180),
-        west: NumberGenerator.generateDouble(180, -180),
+        west: NumberGenerator.generateDouble(180, -180)
     } as Bounds;
 }
 
@@ -297,7 +293,7 @@ export function dummyGeoTiff() {
         width: NumberGenerator.generateInt(1000),
         height: NumberGenerator.generateInt(1000),
         rasters: NumberGenerator.generate2DListOfNumbers(NumberGenerator.generateInt, 40, 40, 256),
-        bounds: dummyBounds(),
+        bounds: dummyBounds()
     } as GeoTiff;
 }
 
@@ -317,7 +313,7 @@ export function dummyMapSettings() {
         showPanels: UtilGenerator.generateBoolean(),
         showHeatmap: UtilGenerator.generateBoolean(),
         heatmapAnimation: UtilGenerator.generateBoolean(),
-        configIdIndex: NumberGenerator.generateInt(50),
+        configIdIndex: NumberGenerator.generateInt(50)
     } as MapSettings;
 }
 
@@ -333,22 +329,9 @@ export function dummySolarDataType() {
     } as SolarDataType;
 }
 
-export type LayerId = 
-    "hourlyShade" |
-    "annualFlux" | 
-    "monthlyFlux" | 
-    "mask" |
-    "dsm" | 
-    "rgb";
+export type LayerId = "hourlyShade" | "annualFlux" | "monthlyFlux" | "mask" | "dsm" | "rgb";
 
-export const layerIds: LayerId[] = [
-    "hourlyShade",
-    "annualFlux", 
-    "monthlyFlux",
-    "mask",
-    "dsm",
-    "rgb"
-];
+export const layerIds: LayerId[] = ["hourlyShade", "annualFlux", "monthlyFlux", "mask", "dsm", "rgb"];
 
 export function dummyLayerId() {
     return UtilGenerator.chooseRandomObjectFromList(layerIds);

@@ -1,4 +1,4 @@
-import { UtilGenerator } from "./generators/utilGenerators"
+import { UtilGenerator } from "./generators/utilGenerators";
 import { NumberGenerator } from "./generators/numberGenerator";
 
 export type Coordinates = LatLng | LatitudeLongitude | Cartesian;
@@ -13,7 +13,7 @@ export function dummyLatLng() {
         lat: NumberGenerator.generateLat(),
         lng: NumberGenerator.generateLng()
     } as LatLng;
-};
+}
 
 export type LatitudeLongitude = {
     latitude: number;
@@ -25,18 +25,18 @@ export function dummyLatitudeLongitude() {
         latitude: NumberGenerator.generateLat(),
         longitude: NumberGenerator.generateLng()
     } as LatitudeLongitude;
-};
+}
 
 export type Cartesian = {
-    y: number,
-    x: number
+    y: number;
+    x: number;
 };
 
 export function dummyCartesian() {
     return {
         x: NumberGenerator.generateLat(),
         y: NumberGenerator.generateLng()
-    } as Cartesian
+    } as Cartesian;
 }
 
 export function validCoordinates(coord: Coordinates) {
@@ -48,7 +48,7 @@ export function validCoordinates(coord: Coordinates) {
         lng = coord.lng;
     } else if ("latitude" in coord) {
         lat = coord.latitude;
-        lng = coord.longitude
+        lng = coord.longitude;
     } else if ("x" in coord) {
         lat = coord.y;
         lng = coord.x;

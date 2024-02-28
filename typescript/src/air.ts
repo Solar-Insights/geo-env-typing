@@ -1,4 +1,4 @@
-import { UtilGenerator } from "./generators/utilGenerators"
+import { UtilGenerator } from "./generators/utilGenerators";
 import { StringGenerator } from "./generators/stringGenerator";
 import { NumberGenerator } from "./generators/numberGenerator";
 
@@ -16,7 +16,7 @@ export function dummyAirQualityData() {
         healthRecommendations: dummyHealthRecommendations(),
         indexes: UtilGenerator.generateMultipleObjects(dummyAqi, 5),
         pollutants: UtilGenerator.generateMultipleObjects(dummyAirPollutant, 5),
-        regionCode: StringGenerator.generateWord(),
+        regionCode: StringGenerator.generateWord()
     } as AirQualityData;
 }
 
@@ -36,7 +36,7 @@ export function dummyAqi() {
         code: StringGenerator.generateWord(),
         displayName: StringGenerator.generateWord(),
         dominantPollutant: StringGenerator.generateWord()
-    } as Aqi
+    } as Aqi;
 }
 
 export type AirPollutant = {
@@ -64,10 +64,10 @@ export function dummyAirPollutant() {
         },
         concentration: {
             units: StringGenerator.generateWord(),
-            value: NumberGenerator.generateDouble(100, 0),
-        },
+            value: NumberGenerator.generateDouble(100, 0)
+        }
     } as AirPollutant;
-};
+}
 
 export type HealthRecommendations = {
     generalPopulation: string;
@@ -93,19 +93,19 @@ export function dummyHealthRecommendations() {
 
 // For an updated list of pollutants, visit https://developers.google.com/maps/documentation/air-quality/pollutants
 export type PollutantCode =
-    "co" |
-    "c6h6" |
-    "ox" |
-    "o3" |
-    "nh3" |
-    "nhmc" |
-    "no" |
-    "nox" |
-    "no2" |
-    "pm25" |
-    "pm10" |
-    "so2" |
-    "trs";
+    | "co"
+    | "c6h6"
+    | "ox"
+    | "o3"
+    | "nh3"
+    | "nhmc"
+    | "no"
+    | "nox"
+    | "no2"
+    | "pm25"
+    | "pm10"
+    | "so2"
+    | "trs";
 
 export const pollutantCodes: PollutantCode[] = [
     "co",
@@ -125,4 +125,4 @@ export const pollutantCodes: PollutantCode[] = [
 
 export function dummyPollutantCode() {
     return UtilGenerator.chooseRandomObjectFromList(pollutantCodes);
-};
+}
