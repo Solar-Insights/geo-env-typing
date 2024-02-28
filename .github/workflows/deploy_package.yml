@@ -84,13 +84,16 @@ jobs:
           npm run format
           git config --global user.email "github_action@github.com"
           git config --global user.name "github_robot"
-          git commit --all -m "[Automated commit] - Code formatting"
+          git commit --all -m "[Automated commit] - Code"
 
       - name: Publish package
         working-directory: .\typescript
         env: 
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish
+        run: |
+          npm run dist
+          cd dist
+          npm publish
 
       - name: Push commited changes
         working-directory: .\typescript
