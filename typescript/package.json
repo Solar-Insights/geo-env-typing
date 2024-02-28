@@ -15,12 +15,13 @@
         "url": "https://github.com/MathBeaudoin/geo-env-typing.git"
     },
     "scripts": {
-        "build": "npm run test && npm run prettier && npm run clean && npm run build:esm && npm run build:cjs",
+        "build": "npm run test && npm run prettier && npm run clean && npm run build:esm && npm run build:cjs && npm run copy-package-file",
         "test": "vitest run",
         "prettier": "prettier --trailing-comma none --tab-width 4 --print-width 120 -uw --cache --ignore-path .gitignore .",
         "clean": "if exist .\\dist rmdir /S /Q .\\dist",
-        "build:esm": "tsc -p .\\tsconfig.esm.json && cd .\\dist\\esm && ren *.js *.mjs && cd ..\\..\\",
+        "build:esm": "tsc -p .\\tsconfig.esm.json",
         "build:cjs": "tsc -p .\\tsconfig.cjs.json",
+        "copy-package-file": "copy .\\package.json .\\dist\\package.json",
         "prepack": "npm run build"
     },
     "devDependencies": {
