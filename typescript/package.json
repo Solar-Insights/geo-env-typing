@@ -33,22 +33,22 @@
     "exports": {
         "./*": {
             "import": {
-                "types": "./dist/esm/types/*.d.ts",
-                "default": "./dist/esm/*.js"
+                "types": "./esm/types/*.d.ts",
+                "default": "./esm/*.js"
             },
             "require": {
-                "types": "./dist/cjs/types/*.d.ts",
-                "default": "./dist/cjs/*.js"
+                "types": "./cjs/types/*.d.ts",
+                "default": "./cjs/*.js"
             }
         },
         "./generators/*": {
             "import": {
-                "types": "./dist/esm/types/generators/*.d.ts",
-                "default": "./dist/esm/generators/*.js"
+                "types": "./esm/types/generators/*.d.ts",
+                "default": "./esm/generators/*.js"
             },
             "require": {
-                "types": "./dist/cjs/types/generators/*.d.ts",
-                "default": "./dist/cjs/generators/*.js"
+                "types": "./cjs/types/generators/*.d.ts",
+                "default": "./cjs/generators/*.js"
             }
         }
     },
