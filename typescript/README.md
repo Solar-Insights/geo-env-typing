@@ -23,15 +23,19 @@ The different APIs from Google return three main sorts of data:
 Each sort of data is put into a separate folder, and generator classes are used as helper to provide dummy functions. The name of the types may not be identical to the ones provided by Google, but all the attributes name should be. Do not hesitate to create an issue or to message me if an API endpoint is not supported and / or any error exists in the code regarding the types, their attributes, or the dummy functions.
 
 ## TypeScript
-For TypeScript users that installed the package `geo-env-typing`, you can access the different types and functions can be imported using the following paths: 
-- `geo-env-typing/geo`
-- `geo-env-typing/solar`
-- `geo-env-typing/air`
 
-Also, the generator classes can be imported from their respective file using the following path: 
-- `geo-env-typing/generators/`
+For TypeScript users that installed the package `geo-env-typing`, you can access the different types and functions can be imported using the following paths:
+
+-   `geo-env-typing/geo`
+-   `geo-env-typing/solar`
+-   `geo-env-typing/air`
+
+Also, the generator classes can be imported from their respective file using the following path:
+
+-   `geo-env-typing/generators/`
 
 For example, to import and use the method `dummyLatLng` from the `geo` module and the `numberGenerator` class using ESModule, the following lines of code would be used:
+
 ```
 import { dummyLatLng } from "geo-env-typing/geo";
 import { numberGenerator } from "geo-env-typing/generators/numberGenerator";
