@@ -84,7 +84,7 @@ jobs:
           npm run format
           git config --global user.email "github_action@github.com"
           git config --global user.name "github_robot"
-          git commit --all -m --allow-empty "[Automated commit] - Code"
+          git commit --allow-empty --all -m "[Automated commit] - Code"
 
       - name: Publish package
         working-directory: .\typescript
