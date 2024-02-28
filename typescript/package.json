@@ -1,6 +1,6 @@
 {
     "name": "geo-env-typing",
-    "version": "1.1.2",
+    "version": "1.1.7",
     "description": "A package aimed to provide types, classes and data-validators for geographic, solar, and air-quality-data. Currently supporting TypeScript ",
     "keywords": [
         "solar",
@@ -15,14 +15,37 @@
         "url": "https://github.com/MathBeaudoin/geo-env-typing.git"
     },
     "scripts": {
-        "build": "npm run test && npm run prettier && npm run clean && npm run build:esm && npm run build:cjs && npm run copy-package-file",
-        "test": "vitest run",
-        "prettier": "prettier --trailing-comma none --tab-width 4 --print-width 120 -uw --cache --ignore-path .gitignore .",
+        "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run copy-package-file",
         "clean": "if exist .\\dist rmdir /S /Q .\\dist",
         "build:esm": "tsc -p .\\tsconfig.esm.json",
         "build:cjs": "tsc -p .\\tsconfig.cjs.json",
         "copy-package-file": "copy .\\package.json .\\dist\\package.json",
-        "prepack": "npm run build"
+
+        "test-and-clean": "npm run test && npm run format",
+        "test": "vitest run",
+        "format": "prettier --trailing-comma none --tab-width 4 --print-width 120 -uw --cache --ignore-path .gitignore ."
+    },
+    "exports": {
+        "./*": {
+            "import": {
+                "types": "./dist/esm/types/*.d.ts",
+                "default": "./dist/esm/*.js"
+            },
+            "require": {
+                "types": "./dist/cjs/types/*.d.ts",
+                "default": "./dist/cjs/*.js"
+            }
+        },
+        "./generators/*": {
+            "import": {
+                "types": "./dist/esm/types/generators/*.d.ts",
+                "default": "./dist/esm/generators/*.js"
+            },
+            "require": {
+                "types": "./dist/cjs/types/generators/*.d.ts",
+                "default": "./dist/cjs/generators/*.js"
+            }
+        }
     },
     "devDependencies": {
         "prettier": "^3.2.5",

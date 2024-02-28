@@ -60,7 +60,7 @@ jobs:
         working-directory: .\typescript
         run: npm ci
 
-      - name: Increment version and publish package
+      - name: Increment package version
         working-directory: .\typescript
         run: |
           $commit_message=(git log --format=%B -n 1 $env:GITHUB_SHA)
@@ -78,12 +78,19 @@ jobs:
           git config --global user.name "github_robot"
           git commit --all -m "[Automated commit] - $type release generated"
       
+      - name: Format code
+        working-directory: .\typescript
+        run: |
+          npm run format
+          git config --global user.email "github_action@github.com"
+          git config --global user.name "github_robot"
+          git commit --all -m "[Automated commit] - Code formatting"
+
       - name: Publish package
         working-directory: .\typescript
         env: 
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: 
-          npm publish
+        run: npm publish
 
       - name: Push commited changes
         working-directory: .\typescript
