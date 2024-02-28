@@ -1,6 +1,6 @@
 {
     "name": "geo-env-typing",
-    "version": "1.1.12",
+    "version": "1.1.13",
     "description": "A package aimed to provide types, classes and data-validators for geographic, solar, and air-quality-data. Currently supporting TypeScript ",
     "keywords": [
         "solar",
