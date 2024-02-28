@@ -29,4 +29,12 @@ export class UtilGenerator {
         canvas.height = NumberGenerator.generateInt(0, 1000);
         return canvas;
     }
+
+    static generateJsonStringFromObject(object: any) {
+        return JSON.stringify(object);
+    }
+
+    static identicalJsonStrings(object1: any, object2: any) {
+        return UtilGenerator.generateJsonStringFromObject(object1) === UtilGenerator.generateJsonStringFromObject(object2);
+    }
 }
