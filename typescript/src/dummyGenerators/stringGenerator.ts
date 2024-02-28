@@ -10,4 +10,8 @@ export class StringGenerator {
     static generateSentence() {
         return faker.hacker.phrase();
     }
+
+    static generateUrl() {
+        return faker.internet.url();
+    }
 }
