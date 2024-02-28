@@ -23,38 +23,6 @@
         "build:cjs": "tsc -p .\\tsconfig.cjs.json",
         "prepack": "npm run build"
     },
-    "exports": {
-        "./air": {
-            "import": {
-                "types": "./dist/esm/types/air.d.ts",
-                "default": "./dist/esm/air.mjs"
-            },
-            "require": {
-                "types": "./dist/cjs/types/air.d.ts",
-                "default": "./dist/cjs/air.js"
-            }
-        },
-        "./solar": {
-            "import": {
-                "types": "./dist/esm/types/solar.d.ts",
-                "default": "./dist/esm/solar.mjs"
-            },
-            "require": {
-                "types": "./dist/cjs/types/air.d.ts",
-                "default": "./dist/cjs/air.js"
-            }
-        },
-        "./geo": {
-            "import": {
-                "types": "./dist/esm/types/geo.d.ts",
-                "default": "./dist/esm/geo.mjs"
-            },
-            "require": {
-                "types": "./dist/cjs/types/geo.d.ts",
-                "default": "./dist/cjs/geo.js"
-            }
-        }
-    },
     "devDependencies": {
         "prettier": "^3.2.5",
         "tsx": "^4.7.1",
