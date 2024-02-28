@@ -18,4 +18,15 @@ export class UtilGenerator {
         const date = NumberGenerator.generateInt(1, 31);
         return new Date(year, monthIndex, date);
     }
+
+    static generateBoolean() {
+        return NumberGenerator.generateDouble(1) > 0.5; 
+    }
+
+    static generateHTMLCanvasElement() {
+        const canvas = document.createElement("canvas");
+        canvas.width = NumberGenerator.generateInt(0, 1000);
+        canvas.height = NumberGenerator.generateInt(0, 1000);
+        return canvas;
+    }
 }

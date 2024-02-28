@@ -3,14 +3,6 @@ import { NumberGenerator } from "./dummyGenerators/numberGenerator";
 
 export type Coordinates = LatLng | LatitudeLongitude | Cartesian;
 
-export function dummyLat() {
-    return NumberGenerator.generateDouble(90, -90);
-}
-
-export function dummyLng() {
-    return NumberGenerator.generateDouble(180, -180);
-}
-
 export type LatLng = {
     lat: number;
     lng: number;
@@ -18,8 +10,8 @@ export type LatLng = {
 
 export function dummyLatLng() {
     return {
-        lat: dummyLat(),
-        lng: dummyLng()
+        lat: NumberGenerator.generateLat(),
+        lng: NumberGenerator.generateLng()
     } as LatLng;
 };
 
@@ -30,8 +22,8 @@ export type LatitudeLongitude = {
 
 export function dummyLatitudeLongitude() {
     return {
-        latitude: dummyLat(),
-        longitude: dummyLng()
+        latitude: NumberGenerator.generateLat(),
+        longitude: NumberGenerator.generateLng()
     } as LatitudeLongitude;
 };
 
@@ -42,8 +34,8 @@ export type Cartesian = {
 
 export function dummyCartesian() {
     return {
-        x: dummyLat(),
-        y: dummyLng()
+        x: NumberGenerator.generateLat(),
+        y: NumberGenerator.generateLng()
     } as Cartesian
 }
 
