@@ -1,6 +1,6 @@
 {
     "name": "geo-env-typing",
-    "version": "1.1.11",
+    "version": "1.1.12",
     "description": "A package aimed to provide types, classes and data-validators for geographic, solar, and air-quality-data. Currently supporting TypeScript ",
     "keywords": [
         "solar",
@@ -19,13 +19,11 @@
     },
     "scripts": {
         "build": "tsc",
-
         "dist": "npm run clean && npm run build:esm && npm run build:cjs && npm run copy-package-file",
         "clean": "if exist .\\dist rmdir /S /Q .\\dist",
         "build:esm": "tsc -p .\\tsconfig.esm.json",
         "build:cjs": "tsc -p .\\tsconfig.cjs.json",
         "copy-package-file": "copy .\\package.json .\\dist\\package.json",
-
         "test-and-clean": "npm run test && npm run format",
         "test": "vitest run",
         "format": "prettier --trailing-comma none --tab-width 4 --print-width 120 -uw --cache --ignore-path .gitignore ."
