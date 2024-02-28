@@ -1,6 +1,6 @@
-import { UtilGenerator } from "./dummyGenerators/utilGenerators"
-import { StringGenerator } from "./dummyGenerators/stringGenerator";
-import { NumberGenerator } from "./dummyGenerators/numberGenerator";
+import { UtilGenerator } from "./generators/utilGenerators"
+import { StringGenerator } from "./generators/stringGenerator";
+import { NumberGenerator } from "./generators/numberGenerator";
 
 export type AirQualityData = {
     dateTime: Date;
