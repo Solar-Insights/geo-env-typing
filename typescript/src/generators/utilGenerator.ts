@@ -35,6 +35,8 @@ export default class UtilGenerator {
     }
 
     static identicalJsonStrings(object1: any, object2: any) {
-        return UtilGenerator.generateJsonStringFromObject(object1) === UtilGenerator.generateJsonStringFromObject(object2);
+        return (
+            UtilGenerator.generateJsonStringFromObject(object1) === UtilGenerator.generateJsonStringFromObject(object2)
+        );
     }
 }
