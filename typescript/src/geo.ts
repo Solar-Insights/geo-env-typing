@@ -74,11 +74,3 @@ export function lngRespectsRange(lng: number) {
 export function coordinatesAreNumbers(lat: number, lng: number) {
     return typeof lat === "number" && typeof lng === "number" && !isNaN(lng) && !isNaN(lat);
 }
-
-export type MapType = "AIR_QUALITY" | "SOLAR";
-
-export const mapTypes: MapType[] = ["AIR_QUALITY", "SOLAR"];
-
-export function dummyMapType() {
-    return UtilGenerator.chooseRandomObjectFromList(mapTypes);
-}
