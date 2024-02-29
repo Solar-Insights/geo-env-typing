@@ -1,4 +1,4 @@
-import { UtilGenerator } from "./generators/utilGenerators";
+import { UtilGenerator } from "./generators/utilGenerator";
 import { NumberGenerator } from "./generators/numberGenerator";
 
 export type Coordinates = LatLng | LatitudeLongitude | Cartesian;

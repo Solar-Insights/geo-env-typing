@@ -1,4 +1,4 @@
-import { UtilGenerator } from "./generators/utilGenerators";
+import { UtilGenerator } from "./generators/utilGenerator";
 import { StringGenerator } from "./generators/stringGenerator";
 import { NumberGenerator } from "./generators/numberGenerator";
 
