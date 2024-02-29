@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 
-export class StringGenerator {
+export default class StringGenerator {
     private constructor() {}
 
     static generateWord() {

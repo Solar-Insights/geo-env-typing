@@ -1,6 +1,6 @@
-import { NumberGenerator } from "./numberGenerator";
+import NumberGenerator from "./numberGenerator";
 
-export class UtilGenerator {
+export default class UtilGenerator {
     private constructor() {}
 
     static chooseRandomObjectFromList<T>(listOfObjects: T[]) {

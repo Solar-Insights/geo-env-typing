@@ -1,4 +1,4 @@
-export class NumberGenerator {
+export default class NumberGenerator {
     private constructor() {}
 
     static generateInt(excludedMax: number, includedMin?: number) {
