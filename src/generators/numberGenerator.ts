@@ -1,3 +1,12 @@
+export namespace NumberGeneratorConstants {
+    export const MAX_LAT = 90;
+    export const MIN_LAT = -90;
+    export const MAX_LNG = 180;
+    export const MIN_LNG = -180;
+};
+
+const {..._} = NumberGeneratorConstants;
+
 export default class NumberGenerator {
     private constructor() {}
 
@@ -18,11 +27,11 @@ export default class NumberGenerator {
     }
 
     static generateLat() {
-        return NumberGenerator.generateDouble(90, -90);
+        return NumberGenerator.generateDouble(_.MAX_LAT, _.MIN_LAT);
     }
 
     static generateLng() {
-        return NumberGenerator.generateDouble(180, -180);
+        return NumberGenerator.generateDouble(_.MAX_LNG, _.MIN_LNG);
     }
 
     static generateListOfNumbers(

@@ -1,6 +1,6 @@
 import NumberGenerator from "./numberGenerator";
 
-export namespace UtilConstants {
+export namespace UtilGeneratorConstants {
     export const MIN_YEAR = 0;
     export const MAX_YEAR = 3000;
     export const MIN_MONTH_INDEX = 0;
@@ -15,7 +15,7 @@ export namespace UtilConstants {
     export const CANVAS_ELEMENT_MAX_WIDTH = 1000;
 };
 
-const {..._} = UtilConstants;
+const {..._} = UtilGeneratorConstants;
 
 export default class UtilGenerator {
     private constructor() {}
