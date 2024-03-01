@@ -1,7 +1,10 @@
 import { NumberGenerator } from "./generators";
 
 export namespace GeoConstants {
-
+    export const MAX_LAT = 90;
+    export const MIN_LAT = -90;
+    export const MAX_LNG = 180;
+    export const MIN_LNG = -180;
 }; 
 
 export type Coordinates = LatLng | LatitudeLongitude | Cartesian;
@@ -67,11 +70,11 @@ export function coordinatesRespectRange(lat: number, lng: number) {
 }
 
 export function latRespectsRange(lat: number) {
-    return lat >= -90.0 && lat <= 90.0;
+    return lat >= GeoConstants.MIN_LAT && lat <= GeoConstants.MAX_LAT;
 }
 
 export function lngRespectsRange(lng: number) {
-    return lng >= -180.0 && lng <= 180.0;
+    return lng >= GeoConstants.MIN_LNG && lng <= GeoConstants.MAX_LNG;
 }
 
 export function coordinatesAreNumbers(lat: number, lng: number) {
