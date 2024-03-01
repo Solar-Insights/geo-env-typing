@@ -2,13 +2,9 @@ import { NumberGenerator, StringGenerator, UtilGenerator} from "./generators";
 
 export namespace AirConstants {
     export const DUMMY_OBJECTS_ARRAY_LENGTH = 5;
-    export const AQI_MIN_VALUE = 0;
     export const AQI_MAX_VALUE = 100;
-    export const RGB_MIN_VALUE = 0;
     export const RGB_MAX_VALUE = 255;
-    export const ALPHA_MIN_VALUE = 0.0;
     export const ALPHA_MAX_VALUE = 1.0;
-    export const CONCENTRATION_MIN = 0.0
     export const CONCENTRATION_MAX = 200.0;
 };
 
@@ -43,7 +39,7 @@ export type Aqi = {
 };
 
 export function dummyAqi() {
-    const AQI_SCORE = NumberGenerator.generateInt(_.AQI_MAX_VALUE + 1, _.AQI_MIN_VALUE);
+    const AQI_SCORE = NumberGenerator.generateInt(_.AQI_MAX_VALUE + 1);
     return {
         code: StringGenerator.generateWord(),
         displayName: StringGenerator.generateWord(),
@@ -64,10 +60,10 @@ export type Color = {
 
 export function dummyColor() {
     return {
-        red: NumberGenerator.generateInt(_.RGB_MAX_VALUE + 1, _.RGB_MIN_VALUE),
-        green: NumberGenerator.generateInt(_.RGB_MAX_VALUE + 1, _.RGB_MIN_VALUE),
-        blue: NumberGenerator.generateInt(_.RGB_MAX_VALUE + 1, _.RGB_MIN_VALUE),
-        alpha: NumberGenerator.generateDouble(_.ALPHA_MAX_VALUE, _.ALPHA_MIN_VALUE)
+        red: NumberGenerator.generateInt(_.RGB_MAX_VALUE + 1),
+        green: NumberGenerator.generateInt(_.RGB_MAX_VALUE + 1),
+        blue: NumberGenerator.generateInt(_.RGB_MAX_VALUE + 1),
+        alpha: NumberGenerator.generateDouble(_.ALPHA_MAX_VALUE)
     }
 }
 
@@ -109,7 +105,7 @@ export type Concentration = {
 export function dummyConcentration() {
     return {
         units: dummyUnit(),
-        value: NumberGenerator.generateDouble(_.CONCENTRATION_MAX, _.CONCENTRATION_MIN)
+        value: NumberGenerator.generateDouble(_.CONCENTRATION_MAX)
     } as Concentration;
 }
 

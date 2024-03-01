@@ -4,9 +4,7 @@ import NumberGenerator from "./numberGenerator";
 export namespace UtilGeneratorConstants {
     export const BOOLEAN_MAX = 1.0;
     export const BOOLEAN_HALF = 0.5;
-    export const CANVAS_ELEMENT_MIN_HEIGHT = 0;
     export const CANVAS_ELEMENT_MAX_HEIGHT = 1000;
-    export const CANVAS_ELEMENT_MIN_WIDTH = 0;
     export const CANVAS_ELEMENT_MAX_WIDTH = 1000;
 };
 
@@ -34,8 +32,8 @@ export default class UtilGenerator {
 
     static generateHTMLCanvasElement() {
         const canvas = document.createElement("canvas");
-        canvas.width = NumberGenerator.generateInt(_.CANVAS_ELEMENT_MAX_WIDTH, _.CANVAS_ELEMENT_MIN_WIDTH);
-        canvas.height = NumberGenerator.generateInt(_.CANVAS_ELEMENT_MAX_HEIGHT, _.CANVAS_ELEMENT_MIN_HEIGHT);
+        canvas.width = NumberGenerator.generateInt(_.CANVAS_ELEMENT_MAX_WIDTH);
+        canvas.height = NumberGenerator.generateInt(_.CANVAS_ELEMENT_MAX_HEIGHT);
         return canvas;
     }
 
