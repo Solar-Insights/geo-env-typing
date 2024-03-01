@@ -1,4 +1,8 @@
-import NumberGenerator from "./generators/numberGenerator";
+import { NumberGenerator } from "./generators";
+
+export namespace GeoConstants {
+
+}; 
 
 export type Coordinates = LatLng | LatitudeLongitude | Cartesian;
 

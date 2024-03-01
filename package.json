@@ -38,16 +38,6 @@
                 "types": "./cjs/types/*.d.ts",
                 "default": "./cjs/*.js"
             }
-        },
-        "./generators/*": {
-            "import": {
-                "types": "./esm/types/generators/*.d.ts",
-                "default": "./esm/generators/*.js"
-            },
-            "require": {
-                "types": "./cjs/types/generators/*.d.ts",
-                "default": "./cjs/generators/*.js"
-            }
         }
     },
     "devDependencies": {

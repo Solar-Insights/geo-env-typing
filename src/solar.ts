@@ -1,7 +1,9 @@
-import NumberGenerator from "./generators/numberGenerator";
-import StringGenerator from "./generators/stringGenerator";
-import UtilGenerator from "./generators/utilGenerator";
+import { NumberGenerator, StringGenerator, UtilGenerator} from "./generators";
 import { LatitudeLongitude, dummyLatitudeLongitude } from "./geo";
+
+export namespace SolarConstants {
+    
+};
 
 export type UserSolarData = {
     minPanelCount: number;

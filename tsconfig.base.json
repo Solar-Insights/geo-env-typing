@@ -10,5 +10,5 @@
         "declarationMap": true,
         "allowSyntheticDefaultImports": true
     },
-    "include": ["src/**/*.ts", "src/README.md"]
+    "include": ["src/**/*.ts", "../README.md"]
 }
