@@ -1,60 +1,82 @@
 import { NumberGenerator, StringGenerator, UtilGenerator} from "./generators";
 
 export namespace AirConstants {
-
+    export const DUMMY_OBJECTS_ARRAY_LENGTH = 5;
+    export const AQI_MIN_VALUE = 0;
+    export const AQI_MAX_VALUE = 100;
+    export const RGB_MIN_VALUE = 0;
+    export const RGB_MAX_VALUE = 255;
+    export const ALPHA_MIN_VALUE = 0.0;
+    export const ALPHA_MAX_VALUE = 1.0;
+    export const CONCENTRATION_MIN = 0.0
+    export const CONCENTRATION_MAX = 200.0;
 };
 
-
+const {..._} = AirConstants;
 
 export type AirQualityData = {
-    dateTime: Date;
-    healthRecommendations: HealthRecommendations;
+    dateTime: string;
+    regionCode: string;
     indexes: Aqi[];
     pollutants: AirPollutant[];
-    regionCode: string;
-};
+    healthRecommendations: HealthRecommendations;
+}
 
 export function dummyAirQualityData() {
     return {
-        dateTime: UtilGenerator.generateDate(),
-        healthRecommendations: dummyHealthRecommendations(),
-        indexes: UtilGenerator.generateMultipleObjects(dummyAqi, 5),
-        pollutants: UtilGenerator.generateMultipleObjects(dummyAirPollutant, 5),
-        regionCode: StringGenerator.generateWord()
+        dateTime: StringGenerator.generateDateString(),
+        regionCode: StringGenerator.generateCountryCode(),
+        indexes: UtilGenerator.generateMultipleObjects(dummyAqi, _.DUMMY_OBJECTS_ARRAY_LENGTH),
+        pollutants: UtilGenerator.generateMultipleObjects(dummyAirPollutant, _.DUMMY_OBJECTS_ARRAY_LENGTH),
+        healthRecommendations: dummyHealthRecommendations()
     } as AirQualityData;
 }
 
 export type Aqi = {
-    aqi: number;
-    aqiDisplay: string;
-    code: string;
-    displayName: string;
-    category: string;
-    dominantPollutant: string;
+    code: string,
+    displayName: string,
+    aqiDisplay: string,
+    color: Color,
+    category: string,
+    dominantPollutant: string,
+    aqi: number
 };
 
 export function dummyAqi() {
+    const AQI_SCORE = NumberGenerator.generateInt(_.AQI_MAX_VALUE + 1, _.AQI_MIN_VALUE);
     return {
-        aqi: NumberGenerator.generateInt(10),
-        aqiDisplay: StringGenerator.generateWord(),
         code: StringGenerator.generateWord(),
         displayName: StringGenerator.generateWord(),
+        aqi: AQI_SCORE,
+        aqiDisplay: AQI_SCORE.toString(),
+        color: dummyColor(),
+        category: StringGenerator.generateWord(),
         dominantPollutant: StringGenerator.generateWord()
     } as Aqi;
+}
+
+export type Color = {
+    red: number,
+    green: number,
+    blue: number,
+    alpha: number
+};
+
+export function dummyColor() {
+    return {
+        red: NumberGenerator.generateInt(_.RGB_MAX_VALUE + 1, _.RGB_MIN_VALUE),
+        green: NumberGenerator.generateInt(_.RGB_MAX_VALUE + 1, _.RGB_MIN_VALUE),
+        blue: NumberGenerator.generateInt(_.RGB_MAX_VALUE + 1, _.RGB_MIN_VALUE),
+        alpha: NumberGenerator.generateDouble(_.ALPHA_MAX_VALUE, _.ALPHA_MIN_VALUE)
+    }
 }
 
 export type AirPollutant = {
     code: PollutantCode;
     displayName: string;
     fullName: string;
-    additionalInfo: {
-        effects: string;
-        sources: string;
-    };
-    concentration: {
-        units: "PARTS_PER_BILLION" | "MICROGRAMS_PER_CUBIC_METER";
-        value: number;
-    };
+    additionalInfo: AdditionalInfo;
+    concentration: Concentration;
 };
 
 export function dummyAirPollutant() {
@@ -62,15 +84,41 @@ export function dummyAirPollutant() {
         code: dummyPollutantCode(),
         displayName: StringGenerator.generateWord(),
         fullName: StringGenerator.generateWord(),
-        additionalInfo: {
-            effects: StringGenerator.generateWord(),
-            sources: StringGenerator.generateWord()
-        },
-        concentration: {
-            units: StringGenerator.generateWord(),
-            value: NumberGenerator.generateDouble(100, 0)
-        }
+        additionalInfo: dummyAdditionalInfo(),
+        concentration: dummyConcentration()
     } as AirPollutant;
+}
+
+export type AdditionalInfo = {
+    sources: string,
+    effects: String
+};
+
+export function dummyAdditionalInfo() {
+    return {
+        sources: StringGenerator.generateSentence(),
+        effects: StringGenerator.generateSentence()
+    } as AdditionalInfo;
+}
+
+export type Concentration = {
+    units: Unit
+    value: number
+}
+
+export function dummyConcentration() {
+    return {
+        units: dummyUnit(),
+        value: NumberGenerator.generateDouble(_.CONCENTRATION_MAX, _.CONCENTRATION_MIN)
+    } as Concentration;
+}
+
+export type Unit = "UNIT_UNSPECIFIED" | "PARTS_PER_BILLION" | "MICROGRAMS_PER_CUBIC_METER";
+
+export const units: Unit[] = ["UNIT_UNSPECIFIED", "PARTS_PER_BILLION", "MICROGRAMS_PER_CUBIC_METER"]
+
+export function dummyUnit() {
+    return UtilGenerator.chooseRandomObjectFromList(units);
 }
 
 export type HealthRecommendations = {
@@ -85,13 +133,13 @@ export type HealthRecommendations = {
 
 export function dummyHealthRecommendations() {
     return {
-        generalPopulation: StringGenerator.generateWord(),
-        children: StringGenerator.generateWord(),
-        elderly: StringGenerator.generateWord(),
-        athletes: StringGenerator.generateWord(),
-        pregnantWomen: StringGenerator.generateWord(),
-        heartDiseasePopulation: StringGenerator.generateWord(),
-        lungDiseasePopulation: StringGenerator.generateWord()
+        generalPopulation: StringGenerator.generateSentence(),
+        children: StringGenerator.generateSentence(),
+        elderly: StringGenerator.generateSentence(),
+        athletes: StringGenerator.generateSentence(),
+        pregnantWomen: StringGenerator.generateSentence(),
+        heartDiseasePopulation: StringGenerator.generateSentence(),
+        lungDiseasePopulation: StringGenerator.generateSentence()
     } as HealthRecommendations;
 }
 
