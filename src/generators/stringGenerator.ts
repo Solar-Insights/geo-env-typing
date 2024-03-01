@@ -2,7 +2,7 @@ import { faker } from "@faker-js/faker";
 
 export default class StringGenerator {
     private constructor() {}
-
+    
     static generateWord() {
         return faker.word.sample();
     }
@@ -13,5 +13,13 @@ export default class StringGenerator {
 
     static generateUrl() {
         return faker.internet.url();
+    }
+
+    static generateDateString() {
+        return faker.date.anytime().toISOString();
+    }
+
+    static generateCountryCode() {
+        return faker.location.countryCode();
     }
 }

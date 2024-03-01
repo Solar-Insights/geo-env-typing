@@ -1,12 +1,7 @@
+import { faker } from "@faker-js/faker";
 import NumberGenerator from "./numberGenerator";
 
 export namespace UtilGeneratorConstants {
-    export const MIN_YEAR = 0;
-    export const MAX_YEAR = 3000;
-    export const MIN_MONTH_INDEX = 0;
-    export const MAX_MONTH_INDEX = 11;
-    export const MIN_DAY = 1;
-    export const MAX_DAY = 31;
     export const BOOLEAN_MAX = 1.0;
     export const BOOLEAN_HALF = 0.5;
     export const CANVAS_ELEMENT_MIN_HEIGHT = 0;
@@ -30,10 +25,7 @@ export default class UtilGenerator {
     }
 
     static generateDate() {
-        const year = NumberGenerator.generateInt(_.MAX_YEAR, _.MIN_YEAR);
-        const monthIndex = NumberGenerator.generateInt(_.MAX_MONTH_INDEX + 1, _.MIN_MONTH_INDEX);
-        const date = NumberGenerator.generateInt(_.MAX_DAY + 1, _.MIN_DAY);
-        return new Date(year, monthIndex, date);
+        return faker.date.anytime();
     }
 
     static generateBoolean() {
