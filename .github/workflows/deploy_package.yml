@@ -26,11 +26,9 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Install dependencies
-        working-directory: .\typescript
         run: npm ci
 
       - name: Run tests
-        working-directory: .\typescript
         run: npm test
 
 
@@ -57,11 +55,9 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
-        working-directory: .\typescript
         run: npm ci
 
       - name: Increment package version
-        working-directory: .\typescript
         run: |
           $commit_message=(git log --format=%B -n 1 $env:GITHUB_SHA)
           $type = ""
@@ -79,7 +75,6 @@ jobs:
           git commit --all -m "[Automated commit] - $type release generated"
       
       - name: Format code
-        working-directory: .\typescript
         run: |
           npm run format
           git config --global user.email "github_action@github.com"
@@ -87,7 +82,6 @@ jobs:
           git commit --allow-empty --all -m "[Automated commit] - formatted Code"
 
       - name: Publish package
-        working-directory: .\typescript
         env: 
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
@@ -96,7 +90,6 @@ jobs:
           npm publish
 
       - name: Push commited changes
-        working-directory: .\typescript
         env: 
           repo-token: ${{ secrets.GITHUB_TOKEN }}
         run: 
