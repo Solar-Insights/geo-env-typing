@@ -6,10 +6,11 @@
         "solar",
         "air quality",
         "geospatial",
+        "google api",
         "gis",
         "types",
-        "mocking",
-        "google api"
+        "mock",
+        "dummy"
     ],
     "type": "module",
     "author": "MathBeaudoin",
