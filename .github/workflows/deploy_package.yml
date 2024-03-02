@@ -26,11 +26,9 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Install dependencies
-        working-directory: .\typescript
         run: npm ci
 
       - name: Run tests
-        working-directory: .\typescript
         run: npm test
 
 
@@ -49,6 +47,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+     
+      - name: Set up Git
+        run: | 
+          git config user.email "github_action@github.com"
+          git config user.name "github robot"
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
@@ -57,11 +60,9 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
-        working-directory: .\typescript
         run: npm ci
 
       - name: Increment package version
-        working-directory: .\typescript
         run: |
           $commit_message=(git log --format=%B -n 1 $env:GITHUB_SHA)
           $type = ""
@@ -74,20 +75,14 @@ jobs:
           }
           
           npm version $type
-          git config --global user.email "github_action@github.com"
-          git config --global user.name "github_robot"
-          git commit --all -m "[Automated commit] - $type release generated"
+          git commit --allow-empty --all -m "[Automated commit] - $type release generated"
       
       - name: Format code
-        working-directory: .\typescript
         run: |
           npm run format
-          git config --global user.email "github_action@github.com"
-          git config --global user.name "github_robot"
           git commit --allow-empty --all -m "[Automated commit] - formatted Code"
 
       - name: Publish package
-        working-directory: .\typescript
         env: 
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
@@ -96,7 +91,6 @@ jobs:
           npm publish
 
       - name: Push commited changes
-        working-directory: .\typescript
         env: 
           repo-token: ${{ secrets.GITHUB_TOKEN }}
         run: 
