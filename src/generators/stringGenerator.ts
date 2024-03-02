@@ -22,4 +22,16 @@ export default class StringGenerator {
     static generateCountryCode() {
         return faker.location.countryCode();
     }
+
+    static generateState() {
+        return faker.location.state();
+    }
+
+    static generateZipCode() {
+        return faker.location.zipCode();
+    }
+
+    static generateCurrencyCode() {
+        return faker.finance.currency().code;
+    }
 }
