@@ -6,9 +6,9 @@ export namespace UtilGeneratorConstants {
     export const BOOLEAN_HALF = 0.5;
     export const CANVAS_ELEMENT_MAX_HEIGHT = 1000;
     export const CANVAS_ELEMENT_MAX_WIDTH = 1000;
-};
+}
 
-const {..._} = UtilGeneratorConstants;
+const { ..._ } = UtilGeneratorConstants;
 
 export default class UtilGenerator {
     private constructor() {}

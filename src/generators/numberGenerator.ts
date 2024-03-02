@@ -3,9 +3,9 @@ export namespace NumberGeneratorConstants {
     export const MIN_LAT = -90;
     export const MAX_LNG = 180;
     export const MIN_LNG = -180;
-};
+}
 
-const {..._} = NumberGeneratorConstants;
+const { ..._ } = NumberGeneratorConstants;
 
 export default class NumberGenerator {
     private constructor() {}

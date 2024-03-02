@@ -1,4 +1,4 @@
-import { NumberGenerator, StringGenerator, UtilGenerator} from "./generators";
+import { NumberGenerator, StringGenerator, UtilGenerator } from "./generators";
 
 export namespace AirConstants {
     export const DUMMY_OBJECTS_ARRAY_LENGTH = 5;
@@ -6,9 +6,9 @@ export namespace AirConstants {
     export const RGB_MAX_VALUE = 255;
     export const ALPHA_MAX_VALUE = 1.0;
     export const CONCENTRATION_MAX = 200.0;
-};
+}
 
-const {..._} = AirConstants;
+const { ..._ } = AirConstants;
 
 export type AirQualityData = {
     dateTime: string;
@@ -16,7 +16,7 @@ export type AirQualityData = {
     indexes: Aqi[];
     pollutants: AirPollutant[];
     healthRecommendations: HealthRecommendations;
-}
+};
 
 export function dummyAirQualityData() {
     return {
@@ -29,13 +29,13 @@ export function dummyAirQualityData() {
 }
 
 export type Aqi = {
-    code: string,
-    displayName: string,
-    aqiDisplay: string,
-    color: Color,
-    category: string,
-    dominantPollutant: string,
-    aqi: number
+    code: string;
+    displayName: string;
+    aqiDisplay: string;
+    color: Color;
+    category: string;
+    dominantPollutant: string;
+    aqi: number;
 };
 
 export function dummyAqi() {
@@ -52,10 +52,10 @@ export function dummyAqi() {
 }
 
 export type Color = {
-    red: number,
-    green: number,
-    blue: number,
-    alpha: number
+    red: number;
+    green: number;
+    blue: number;
+    alpha: number;
 };
 
 export function dummyColor() {
@@ -64,7 +64,7 @@ export function dummyColor() {
         green: NumberGenerator.generateInt(_.RGB_MAX_VALUE + 1),
         blue: NumberGenerator.generateInt(_.RGB_MAX_VALUE + 1),
         alpha: NumberGenerator.generateDouble(_.ALPHA_MAX_VALUE)
-    }
+    };
 }
 
 export type AirPollutant = {
@@ -86,8 +86,8 @@ export function dummyAirPollutant() {
 }
 
 export type AdditionalInfo = {
-    sources: string,
-    effects: String
+    sources: string;
+    effects: String;
 };
 
 export function dummyAdditionalInfo() {
@@ -98,9 +98,9 @@ export function dummyAdditionalInfo() {
 }
 
 export type Concentration = {
-    units: Unit
-    value: number
-}
+    units: Unit;
+    value: number;
+};
 
 export function dummyConcentration() {
     return {
@@ -111,7 +111,7 @@ export function dummyConcentration() {
 
 export type Unit = "UNIT_UNSPECIFIED" | "PARTS_PER_BILLION" | "MICROGRAMS_PER_CUBIC_METER";
 
-export const units: Unit[] = ["UNIT_UNSPECIFIED", "PARTS_PER_BILLION", "MICROGRAMS_PER_CUBIC_METER"]
+export const units: Unit[] = ["UNIT_UNSPECIFIED", "PARTS_PER_BILLION", "MICROGRAMS_PER_CUBIC_METER"];
 
 export function dummyUnit() {
     return UtilGenerator.chooseRandomObjectFromList(units);

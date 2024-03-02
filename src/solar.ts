@@ -1,4 +1,4 @@
-import { NumberGenerator, StringGenerator, UtilGenerator} from "./generators";
+import { NumberGenerator, StringGenerator, UtilGenerator } from "./generators";
 import { LatitudeLongitude, dummyLatitudeLongitude } from "./geo";
 
 export namespace SolarConstants {
@@ -7,7 +7,7 @@ export namespace SolarConstants {
     export const PANELS_CAPACITY_WATTS_WAX = 500;
     export const PANEL_HEIGHT_METERS_MAX = 2.0;
     export const PANEL_WIDTH_METERS_MAX = 2.0;
-    export const PANEL_LIFETIME_YEARS_MAX = 50; 
+    export const PANEL_LIFETIME_YEARS_MAX = 50;
     export const ARRAY_AREA_METER_MAX = 10000;
     export const SUNSHINE_HOURS_PER_YEAR_MAX = 3000;
     export const CARBON_OFFSET_FACTOR_KG_PER_KWH_MAX = 1000;
@@ -25,10 +25,10 @@ export namespace SolarConstants {
     export const AVERAGE_KWH_PER_MONTH_MAX = 10000;
     export const PERCENTAGE_100_MAX = 100.0;
     export const PAYBACK_YEARS_MAX = 30;
-    export const INITIAL_AC_KWH_PER_YEAR_MAX = 10000.0
-};
+    export const INITIAL_AC_KWH_PER_YEAR_MAX = 10000.0;
+}
 
-const {..._} = SolarConstants;
+const { ..._ } = SolarConstants;
 
 export type BuildingInsights = {
     name: string;
@@ -36,10 +36,10 @@ export type BuildingInsights = {
     boundingBox: BoundingBox;
     imageryData: GDate;
     imageryProcessedDate: GDate;
-    postalCode: string,
-    administrativeArea: string,
-    statisticalArea: string,
-    regionCode: string,
+    postalCode: string;
+    administrativeArea: string;
+    statisticalArea: string;
+    regionCode: string;
     solarPotential: SolarPotential;
     imageryQuality: ImageryQuality;
 };
@@ -56,7 +56,7 @@ export function dummyBuildingInsights() {
         statisticalArea: StringGenerator.generateWord(),
         regionCode: StringGenerator.generateWord(),
         solarPotential: dummySolarPotential(),
-        imageryQuality: dummyImageryQuality(),
+        imageryQuality: dummyImageryQuality()
     } as BuildingInsights;
 }
 
@@ -69,20 +69,20 @@ export function dummyImageryQuality() {
 }
 
 export type SolarPotential = {
-    maxArrayPanelsCount: number,
-    panelCapacityWatts: number,
-    panelHeightMeters: number,
-    panelWidthMeters: number,
-    panelLifetimeYears: number,
-    maxArrayAreaMeters2: number,
-    maxSunshineHoursPerYear: number,
-    carbonOffsetFactorKgPerMwh: number,
-    wholeRoofStats: SizeAndSunshineStats,
-    buildingStats: SizeAndSunshineStats,
-    roofSegmentStats: RoofSegmentSizeAndSunshineStats[],
-    solarPanels: SolarPanel[],
-    solarPanelConfigs: SolarPanelConfig[],
-    financialAnalyses: FinancialAnalysis[],
+    maxArrayPanelsCount: number;
+    panelCapacityWatts: number;
+    panelHeightMeters: number;
+    panelWidthMeters: number;
+    panelLifetimeYears: number;
+    maxArrayAreaMeters2: number;
+    maxSunshineHoursPerYear: number;
+    carbonOffsetFactorKgPerMwh: number;
+    wholeRoofStats: SizeAndSunshineStats;
+    buildingStats: SizeAndSunshineStats;
+    roofSegmentStats: RoofSegmentSizeAndSunshineStats[];
+    solarPanels: SolarPanel[];
+    solarPanelConfigs: SolarPanelConfig[];
+    financialAnalyses: FinancialAnalysis[];
 };
 
 export function dummySolarPotential() {
@@ -97,10 +97,16 @@ export function dummySolarPotential() {
         carbonOffsetFactorKgPerMwh: NumberGenerator.generateDouble(_.CARBON_OFFSET_FACTOR_KG_PER_KWH_MAX),
         wholeRoofStats: dummySizeAndSunshineStats(),
         buildingStats: dummySizeAndSunshineStats(),
-        roofSegmentStats: UtilGenerator.generateMultipleObjects(dummyRoofSegmentSizeAndSunshineStats, _.DUMMY_OBJECTS_ARRAY_LENGTH),
-        solarPanels: UtilGenerator.generateMultipleObjects(dummySolarPanel, NumberGenerator.generateInt(_.ARRAY_PANELS_COUNT_MAX)),
+        roofSegmentStats: UtilGenerator.generateMultipleObjects(
+            dummyRoofSegmentSizeAndSunshineStats,
+            _.DUMMY_OBJECTS_ARRAY_LENGTH
+        ),
+        solarPanels: UtilGenerator.generateMultipleObjects(
+            dummySolarPanel,
+            NumberGenerator.generateInt(_.ARRAY_PANELS_COUNT_MAX)
+        ),
         solarPanelConfigs: UtilGenerator.generateMultipleObjects(dummySolarPanelConfig, _.DUMMY_OBJECTS_ARRAY_LENGTH),
-        financialAnalyses: UtilGenerator.generateMultipleObjects(dummyFinancialAnalysis, _.DUMMY_OBJECTS_ARRAY_LENGTH),
+        financialAnalyses: UtilGenerator.generateMultipleObjects(dummyFinancialAnalysis, _.DUMMY_OBJECTS_ARRAY_LENGTH)
     } as SolarPotential;
 }
 
@@ -113,7 +119,11 @@ export type SizeAndSunshineStats = {
 export function dummySizeAndSunshineStats() {
     return {
         areaMeters2: NumberGenerator.generateDouble(_.AREA_METERS_2_MAX),
-        sunshineQuantiles: NumberGenerator.generateListOfNumbers(NumberGenerator.generateDouble, _.SUNSHINE_QUANTILES_COUNT_MAX, _.SUNSHINE_QUANTILES_VALUE_MAX),
+        sunshineQuantiles: NumberGenerator.generateListOfNumbers(
+            NumberGenerator.generateDouble,
+            _.SUNSHINE_QUANTILES_COUNT_MAX,
+            _.SUNSHINE_QUANTILES_VALUE_MAX
+        ),
         groundAreaMeters2: NumberGenerator.generateDouble(_.GROUND_AREA_METERS_2_MAX)
     } as SizeAndSunshineStats;
 }
@@ -176,7 +186,10 @@ export function dummySolarPanelConfig() {
     return {
         panelsCount: PANELS_COUNT,
         yearlyEnergyDcKwh: PANELS_COUNT * NumberGenerator.generateDouble(_.YEARLY_ENERGY_DC_KWH),
-        roofSegmentSummaries: UtilGenerator.generateMultipleObjects(dummyRoofSegmentSummary, _.DUMMY_OBJECTS_ARRAY_LENGTH)
+        roofSegmentSummaries: UtilGenerator.generateMultipleObjects(
+            dummyRoofSegmentSummary,
+            _.DUMMY_OBJECTS_ARRAY_LENGTH
+        )
     } as SolarPanelConfig;
 }
 
@@ -217,7 +230,11 @@ export function dummySolarPanel() {
 
 export type SolarPanelOrientation = "SOLAR_PANEL_ORIENTATION_UNSPECIFIED" | "LANDSCAPE" | "PORTRAIT";
 
-export const solarPanelOrientations: SolarPanelOrientation[] = ["SOLAR_PANEL_ORIENTATION_UNSPECIFIED", "LANDSCAPE", "PORTRAIT"]
+export const solarPanelOrientations: SolarPanelOrientation[] = [
+    "SOLAR_PANEL_ORIENTATION_UNSPECIFIED",
+    "LANDSCAPE",
+    "PORTRAIT"
+];
 
 export function dummySolarPanelOrientation() {
     return UtilGenerator.chooseRandomObjectFromList(solarPanelOrientations);
@@ -286,14 +303,14 @@ export function dummyGeoTiff() {
 }
 
 export type FinancialAnalysis = {
-    monthlyBill: Money,
-    defaultBill: boolean,
-    averageKwhPerMonth: number,
-    financialDetails: FinancialDetails,
-    leasingSavings: LeasingSavings,
-    cashPurchaseSavings: CashPurchaseSavings,
-    financedPurchaseSavings: FinancePurchaseSavings,
-    panelConfigIndex: number
+    monthlyBill: Money;
+    defaultBill: boolean;
+    averageKwhPerMonth: number;
+    financialDetails: FinancialDetails;
+    leasingSavings: LeasingSavings;
+    cashPurchaseSavings: CashPurchaseSavings;
+    financedPurchaseSavings: FinancePurchaseSavings;
+    panelConfigIndex: number;
 };
 
 export function dummyFinancialAnalysis() {
@@ -306,14 +323,14 @@ export function dummyFinancialAnalysis() {
         cashPurchaseSavings: dummyCashPurchaseSavings(),
         financedPurchaseSavings: dummyFinancePurchaseSavings(),
         panelConfigIndex: NumberGenerator.generateInt(_.DUMMY_OBJECTS_ARRAY_LENGTH)
-    } as FinancialAnalysis
+    } as FinancialAnalysis;
 }
 
 export type Money = {
-    currencyCode: string,
-    units: string,
-    nanos: number
-}
+    currencyCode: string;
+    units: string;
+    nanos: number;
+};
 
 export function dummyMoney() {
     return {
@@ -324,17 +341,17 @@ export function dummyMoney() {
 }
 
 export type FinancialDetails = {
-    initialAcKwhPerYear: number,
-    remainingLifetimeUtilityBill: Money,
-    federalIncentive: Money,
-    stateIncentive: Money,
-    utilityIncentive: Money,
-    lifetimeSrecTotal: Money,
-    costOfElectricityWithoutSolar: Money,
-    netMeteringAllowed: boolean,
-    solarPercentage: number,
-    percentageExportedToGrid: number
-}
+    initialAcKwhPerYear: number;
+    remainingLifetimeUtilityBill: Money;
+    federalIncentive: Money;
+    stateIncentive: Money;
+    utilityIncentive: Money;
+    lifetimeSrecTotal: Money;
+    costOfElectricityWithoutSolar: Money;
+    netMeteringAllowed: boolean;
+    solarPercentage: number;
+    percentageExportedToGrid: number;
+};
 
 export function dummyFinancialDetails() {
     return {
@@ -347,16 +364,16 @@ export function dummyFinancialDetails() {
         costOfElectricityWithoutSolar: dummyMoney(),
         netMeteringAllowed: UtilGenerator.generateBoolean(),
         solarPercentage: NumberGenerator.generateDouble(_.PERCENTAGE_100_MAX),
-        percentageExportedToGrid: NumberGenerator.generateDouble(_.PERCENTAGE_100_MAX),
-    }  as FinancialDetails
+        percentageExportedToGrid: NumberGenerator.generateDouble(_.PERCENTAGE_100_MAX)
+    } as FinancialDetails;
 }
 
 export type LeasingSavings = {
-    leasesAllowed: boolean,
-    leasesSupported: boolean,
-    annualLeasingCost: Money,
-    savings: SavingsOverTime
-}
+    leasesAllowed: boolean;
+    leasesSupported: boolean;
+    annualLeasingCost: Money;
+    savings: SavingsOverTime;
+};
 
 export function dummyLeasingSavings() {
     return {
@@ -364,16 +381,16 @@ export function dummyLeasingSavings() {
         leasesSupported: UtilGenerator.generateBoolean(),
         annualLeasingCost: dummyMoney(),
         savings: dummySavingsOverTime()
-    }  as LeasingSavings
+    } as LeasingSavings;
 }
 
 export type CashPurchaseSavings = {
-    outOfPocketCost: Money,
-    upfrontCost: Money
-    rebateValue: Money
-    savings: SavingsOverTime,
-    paybackYears: number
-}
+    outOfPocketCost: Money;
+    upfrontCost: Money;
+    rebateValue: Money;
+    savings: SavingsOverTime;
+    paybackYears: number;
+};
 
 export function dummyCashPurchaseSavings() {
     return {
@@ -382,15 +399,15 @@ export function dummyCashPurchaseSavings() {
         rebateValue: dummyMoney(),
         savings: dummySavingsOverTime(),
         paybackYears: NumberGenerator.generateDouble(_.PAYBACK_YEARS_MAX)
-    }  as CashPurchaseSavings
+    } as CashPurchaseSavings;
 }
 
 export type FinancePurchaseSavings = {
-    annualLoanPayment: Money,
-    rebateValue: Money,
-    loanInteresetRate: number,
-    savings: SavingsOverTime
-}
+    annualLoanPayment: Money;
+    rebateValue: Money;
+    loanInteresetRate: number;
+    savings: SavingsOverTime;
+};
 
 export function dummyFinancePurchaseSavings() {
     return {
@@ -398,27 +415,27 @@ export function dummyFinancePurchaseSavings() {
         rebateValue: dummyMoney(),
         loanInteresetRate: NumberGenerator.generateDouble(_.PERCENTAGE_100_MAX),
         savings: dummySavingsOverTime()
-    }  as FinancePurchaseSavings
+    } as FinancePurchaseSavings;
 }
 
 export type SavingsOverTime = {
-    savingsYear1: Money,
-    savingsYear20: Money,
-    presentValueOfSavingsYear20: Money,
-    savingsLifetime: Money,
-    presentValueOfSavingsLifetime: Money,
-    financiallyViable: boolean
-}
+    savingsYear1: Money;
+    savingsYear20: Money;
+    presentValueOfSavingsYear20: Money;
+    savingsLifetime: Money;
+    presentValueOfSavingsLifetime: Money;
+    financiallyViable: boolean;
+};
 
 export function dummySavingsOverTime() {
- return {
-    savingsYear1: dummyMoney(),
-    savingsYear20: dummyMoney(),
-    presentValueOfSavingsYear20: dummyMoney(),
-    savingsLifetime: dummyMoney(),
-    presentValueOfSavingsLifetime: dummyMoney(),
-    financiallyViable: UtilGenerator.generateBoolean()
- } as SavingsOverTime
+    return {
+        savingsYear1: dummyMoney(),
+        savingsYear20: dummyMoney(),
+        presentValueOfSavingsYear20: dummyMoney(),
+        savingsLifetime: dummyMoney(),
+        presentValueOfSavingsLifetime: dummyMoney(),
+        financiallyViable: UtilGenerator.generateBoolean()
+    } as SavingsOverTime;
 }
 
 export type MapSettings = {
@@ -470,7 +487,7 @@ export type SolarLayers = {
     annualFluxUrl: string;
     monthlyFluxUrl: string;
     hourlyShadeUrls: string[];
-    imageryQuality: ImageryQuality
+    imageryQuality: ImageryQuality;
 };
 
 export function dummySolarLayers() {
