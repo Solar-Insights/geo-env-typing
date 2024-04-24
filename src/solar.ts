@@ -28,7 +28,7 @@ export namespace SolarConstants {
     export const INITIAL_AC_KWH_PER_YEAR_MAX = 10000.0;
 }
 
-const { ..._ } = SolarConstants;
+const { ..._g } = SolarConstants;
 
 export type BuildingInsights = {
     name: string;
@@ -87,26 +87,26 @@ export type SolarPotential = {
 
 export function dummySolarPotential() {
     return {
-        maxArrayPanelsCount: NumberGenerator.generateInt(_.ARRAY_PANELS_COUNT_MAX),
-        panelCapacityWatts: NumberGenerator.generateInt(_.PANELS_CAPACITY_WATTS_WAX),
-        panelHeightMeters: NumberGenerator.generateDouble(_.PANEL_HEIGHT_METERS_MAX),
-        panelWidthMeters: NumberGenerator.generateDouble(_.PANEL_WIDTH_METERS_MAX),
-        panelLifetimeYears: NumberGenerator.generateInt(_.PANEL_LIFETIME_YEARS_MAX),
-        maxArrayAreaMeters2: NumberGenerator.generateDouble(_.ARRAY_AREA_METER_MAX),
-        maxSunshineHoursPerYear: NumberGenerator.generateDouble(_.SUNSHINE_HOURS_PER_YEAR_MAX),
-        carbonOffsetFactorKgPerMwh: NumberGenerator.generateDouble(_.CARBON_OFFSET_FACTOR_KG_PER_KWH_MAX),
+        maxArrayPanelsCount: NumberGenerator.generateInt(_g.ARRAY_PANELS_COUNT_MAX),
+        panelCapacityWatts: NumberGenerator.generateInt(_g.PANELS_CAPACITY_WATTS_WAX),
+        panelHeightMeters: NumberGenerator.generateDouble(_g.PANEL_HEIGHT_METERS_MAX),
+        panelWidthMeters: NumberGenerator.generateDouble(_g.PANEL_WIDTH_METERS_MAX),
+        panelLifetimeYears: NumberGenerator.generateInt(_g.PANEL_LIFETIME_YEARS_MAX),
+        maxArrayAreaMeters2: NumberGenerator.generateDouble(_g.ARRAY_AREA_METER_MAX),
+        maxSunshineHoursPerYear: NumberGenerator.generateDouble(_g.SUNSHINE_HOURS_PER_YEAR_MAX),
+        carbonOffsetFactorKgPerMwh: NumberGenerator.generateDouble(_g.CARBON_OFFSET_FACTOR_KG_PER_KWH_MAX),
         wholeRoofStats: dummySizeAndSunshineStats(),
         buildingStats: dummySizeAndSunshineStats(),
         roofSegmentStats: UtilGenerator.generateMultipleObjects(
             dummyRoofSegmentSizeAndSunshineStats,
-            _.DUMMY_OBJECTS_ARRAY_LENGTH
+            _g.DUMMY_OBJECTS_ARRAY_LENGTH
         ),
         solarPanels: UtilGenerator.generateMultipleObjects(
             dummySolarPanel,
-            NumberGenerator.generateInt(_.ARRAY_PANELS_COUNT_MAX)
+            NumberGenerator.generateInt(_g.ARRAY_PANELS_COUNT_MAX)
         ),
-        solarPanelConfigs: UtilGenerator.generateMultipleObjects(dummySolarPanelConfig, _.DUMMY_OBJECTS_ARRAY_LENGTH),
-        financialAnalyses: UtilGenerator.generateMultipleObjects(dummyFinancialAnalysis, _.DUMMY_OBJECTS_ARRAY_LENGTH)
+        solarPanelConfigs: UtilGenerator.generateMultipleObjects(dummySolarPanelConfig, _g.DUMMY_OBJECTS_ARRAY_LENGTH),
+        financialAnalyses: UtilGenerator.generateMultipleObjects(dummyFinancialAnalysis, _g.DUMMY_OBJECTS_ARRAY_LENGTH)
     } as SolarPotential;
 }
 
@@ -118,13 +118,13 @@ export type SizeAndSunshineStats = {
 
 export function dummySizeAndSunshineStats() {
     return {
-        areaMeters2: NumberGenerator.generateDouble(_.AREA_METERS_2_MAX),
+        areaMeters2: NumberGenerator.generateDouble(_g.AREA_METERS_2_MAX),
         sunshineQuantiles: NumberGenerator.generateListOfNumbers(
             NumberGenerator.generateDouble,
-            _.SUNSHINE_QUANTILES_COUNT_MAX,
-            _.SUNSHINE_QUANTILES_VALUE_MAX
+            _g.SUNSHINE_QUANTILES_COUNT_MAX,
+            _g.SUNSHINE_QUANTILES_VALUE_MAX
         ),
-        groundAreaMeters2: NumberGenerator.generateDouble(_.GROUND_AREA_METERS_2_MAX)
+        groundAreaMeters2: NumberGenerator.generateDouble(_g.GROUND_AREA_METERS_2_MAX)
     } as SizeAndSunshineStats;
 }
 
@@ -142,9 +142,9 @@ export function dummyRoofSegmentSizeAndSunshineStats() {
         stats: dummySizeAndSunshineStats(),
         center: dummyLatitudeLongitude(),
         boundingBox: dummyBoundingBox(),
-        pitchDegrees: NumberGenerator.generateDouble(_.PITCH_DEGREES_MAX),
-        azimuthDegrees: NumberGenerator.generateDouble(_.AZIMUTH_DEGREES_MAX, _.AZIMUTH_DEGREES_MIN),
-        planeHeightAtCenterMeters: NumberGenerator.generateDouble(_.PLANE_HEIGHT_AT_CENTER_METERS_MAX)
+        pitchDegrees: NumberGenerator.generateDouble(_g.PITCH_DEGREES_MAX),
+        azimuthDegrees: NumberGenerator.generateDouble(_g.AZIMUTH_DEGREES_MAX, _g.AZIMUTH_DEGREES_MIN),
+        planeHeightAtCenterMeters: NumberGenerator.generateDouble(_g.PLANE_HEIGHT_AT_CENTER_METERS_MAX)
     } as RoofSegmentSizeAndSunshineStats;
 }
 
@@ -182,13 +182,13 @@ export type SolarPanelConfig = {
 };
 
 export function dummySolarPanelConfig() {
-    const PANELS_COUNT = NumberGenerator.generateInt(_.ARRAY_PANELS_COUNT_MAX);
+    const PANELS_COUNT = NumberGenerator.generateInt(_g.ARRAY_PANELS_COUNT_MAX);
     return {
         panelsCount: PANELS_COUNT,
-        yearlyEnergyDcKwh: PANELS_COUNT * NumberGenerator.generateDouble(_.YEARLY_ENERGY_DC_KWH),
+        yearlyEnergyDcKwh: PANELS_COUNT * NumberGenerator.generateDouble(_g.YEARLY_ENERGY_DC_KWH),
         roofSegmentSummaries: UtilGenerator.generateMultipleObjects(
             dummyRoofSegmentSummary,
-            _.DUMMY_OBJECTS_ARRAY_LENGTH
+            _g.DUMMY_OBJECTS_ARRAY_LENGTH
         )
     } as SolarPanelConfig;
 }
@@ -202,13 +202,13 @@ export type RoofSegmentSummary = {
 };
 
 export function dummyRoofSegmentSummary() {
-    const PANELS_COUNT = NumberGenerator.generateInt(_.ARRAY_PANELS_COUNT_MAX);
+    const PANELS_COUNT = NumberGenerator.generateInt(_g.ARRAY_PANELS_COUNT_MAX);
     return {
-        pitchDegrees: NumberGenerator.generateDouble(_.PITCH_DEGREES_MAX),
-        azimuthDegrees: NumberGenerator.generateDouble(_.AZIMUTH_DEGREES_MAX, _.AZIMUTH_DEGREES_MIN),
+        pitchDegrees: NumberGenerator.generateDouble(_g.PITCH_DEGREES_MAX),
+        azimuthDegrees: NumberGenerator.generateDouble(_g.AZIMUTH_DEGREES_MAX, _g.AZIMUTH_DEGREES_MIN),
         panelsCount: PANELS_COUNT,
-        yearlyEnergyDcKwh: PANELS_COUNT * NumberGenerator.generateDouble(_.YEARLY_ENERGY_DC_KWH),
-        segmentIndex: NumberGenerator.generateInt(_.DUMMY_OBJECTS_ARRAY_LENGTH)
+        yearlyEnergyDcKwh: PANELS_COUNT * NumberGenerator.generateDouble(_g.YEARLY_ENERGY_DC_KWH),
+        segmentIndex: NumberGenerator.generateInt(_g.DUMMY_OBJECTS_ARRAY_LENGTH)
     } as RoofSegmentSummary;
 }
 
@@ -223,8 +223,8 @@ export function dummySolarPanel() {
     return {
         center: dummyLatitudeLongitude(),
         orientation: StringGenerator.generateWord(),
-        yearlyEnergyDcKwh: NumberGenerator.generateDouble(_.YEARLY_ENERGY_DC_KWH),
-        segmentIndex: NumberGenerator.generateInt(_.ARRAY_PANELS_COUNT_MAX)
+        yearlyEnergyDcKwh: NumberGenerator.generateDouble(_g.YEARLY_ENERGY_DC_KWH),
+        segmentIndex: NumberGenerator.generateInt(_g.ARRAY_PANELS_COUNT_MAX)
     } as SolarPanel;
 }
 
@@ -317,12 +317,12 @@ export function dummyFinancialAnalysis() {
     return {
         monthlyBill: dummyMoney(),
         defaultBill: UtilGenerator.generateBoolean(),
-        averageKwhPerMonth: NumberGenerator.generateDouble(_.AVERAGE_KWH_PER_MONTH_MAX),
+        averageKwhPerMonth: NumberGenerator.generateDouble(_g.AVERAGE_KWH_PER_MONTH_MAX),
         financialDetails: dummyFinancialDetails(),
         leasingSavings: dummyLeasingSavings(),
         cashPurchaseSavings: dummyCashPurchaseSavings(),
         financedPurchaseSavings: dummyFinancePurchaseSavings(),
-        panelConfigIndex: NumberGenerator.generateInt(_.DUMMY_OBJECTS_ARRAY_LENGTH)
+        panelConfigIndex: NumberGenerator.generateInt(_g.DUMMY_OBJECTS_ARRAY_LENGTH)
     } as FinancialAnalysis;
 }
 
@@ -336,7 +336,7 @@ export function dummyMoney() {
     return {
         currencyCode: StringGenerator.generateCurrencyCode(),
         units: "1",
-        nanos: NumberGenerator.generateInt(_.NANOS_MAX, _.NANOS_MIN)
+        nanos: NumberGenerator.generateInt(_g.NANOS_MAX, _g.NANOS_MIN)
     } as Money;
 }
 
@@ -355,7 +355,7 @@ export type FinancialDetails = {
 
 export function dummyFinancialDetails() {
     return {
-        initialAcKwhPerYear: NumberGenerator.generateDouble(_.INITIAL_AC_KWH_PER_YEAR_MAX),
+        initialAcKwhPerYear: NumberGenerator.generateDouble(_g.INITIAL_AC_KWH_PER_YEAR_MAX),
         remainingLifetimeUtilityBill: dummyMoney(),
         federalIncentive: dummyMoney(),
         stateIncentive: dummyMoney(),
@@ -363,8 +363,8 @@ export function dummyFinancialDetails() {
         lifetimeSrecTotal: dummyMoney(),
         costOfElectricityWithoutSolar: dummyMoney(),
         netMeteringAllowed: UtilGenerator.generateBoolean(),
-        solarPercentage: NumberGenerator.generateDouble(_.PERCENTAGE_100_MAX),
-        percentageExportedToGrid: NumberGenerator.generateDouble(_.PERCENTAGE_100_MAX)
+        solarPercentage: NumberGenerator.generateDouble(_g.PERCENTAGE_100_MAX),
+        percentageExportedToGrid: NumberGenerator.generateDouble(_g.PERCENTAGE_100_MAX)
     } as FinancialDetails;
 }
 
@@ -398,7 +398,7 @@ export function dummyCashPurchaseSavings() {
         upfrontCost: dummyMoney(),
         rebateValue: dummyMoney(),
         savings: dummySavingsOverTime(),
-        paybackYears: NumberGenerator.generateDouble(_.PAYBACK_YEARS_MAX)
+        paybackYears: NumberGenerator.generateDouble(_g.PAYBACK_YEARS_MAX)
     } as CashPurchaseSavings;
 }
 
@@ -413,7 +413,7 @@ export function dummyFinancePurchaseSavings() {
     return {
         annualLoanPayment: dummyMoney(),
         rebateValue: dummyMoney(),
-        loanInteresetRate: NumberGenerator.generateDouble(_.PERCENTAGE_100_MAX),
+        loanInteresetRate: NumberGenerator.generateDouble(_g.PERCENTAGE_100_MAX),
         savings: dummySavingsOverTime()
     } as FinancePurchaseSavings;
 }

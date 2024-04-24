@@ -5,7 +5,7 @@ export namespace NumberGeneratorConstants {
     export const MIN_LNG = -180;
 }
 
-const { ..._ } = NumberGeneratorConstants;
+const { ..._g } = NumberGeneratorConstants;
 
 export default class NumberGenerator {
     private constructor() {}
@@ -27,11 +27,11 @@ export default class NumberGenerator {
     }
 
     static generateLat() {
-        return NumberGenerator.generateDouble(_.MAX_LAT, _.MIN_LAT);
+        return NumberGenerator.generateDouble(_g.MAX_LAT, _g.MIN_LAT);
     }
 
     static generateLng() {
-        return NumberGenerator.generateDouble(_.MAX_LNG, _.MIN_LNG);
+        return NumberGenerator.generateDouble(_g.MAX_LNG, _g.MIN_LNG);
     }
 
     static generateListOfNumbers(

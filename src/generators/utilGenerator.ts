@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import { isEqual } from "lodash";
+import _ from "lodash";
 import NumberGenerator from "./numberGenerator";
 
 export namespace UtilGeneratorConstants {
@@ -9,7 +9,7 @@ export namespace UtilGeneratorConstants {
     export const CANVAS_ELEMENT_MAX_WIDTH = 1000;
 }
 
-const { ..._ } = UtilGeneratorConstants;
+const { ..._g } = UtilGeneratorConstants;
 
 export default class UtilGenerator {
     private constructor() {}
@@ -28,13 +28,13 @@ export default class UtilGenerator {
     }
 
     static generateBoolean() {
-        return NumberGenerator.generateDouble(_.BOOLEAN_MAX) > _.BOOLEAN_HALF;
+        return NumberGenerator.generateDouble(_g.BOOLEAN_MAX) > _g.BOOLEAN_HALF;
     }
 
     static generateHTMLCanvasElement() {
         const canvas = document.createElement("canvas");
-        canvas.width = NumberGenerator.generateInt(_.CANVAS_ELEMENT_MAX_WIDTH);
-        canvas.height = NumberGenerator.generateInt(_.CANVAS_ELEMENT_MAX_HEIGHT);
+        canvas.width = NumberGenerator.generateInt(_g.CANVAS_ELEMENT_MAX_WIDTH);
+        canvas.height = NumberGenerator.generateInt(_g.CANVAS_ELEMENT_MAX_HEIGHT);
         return canvas;
     }
 
@@ -43,6 +43,6 @@ export default class UtilGenerator {
     }
 
     static identicalJsonStrings(object1: any, object2: any) {
-        return isEqual(object1, object2);
+        return _.isEqual(object1, object2);
     }
 }

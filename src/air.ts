@@ -8,7 +8,7 @@ export namespace AirConstants {
     export const CONCENTRATION_MAX = 200.0;
 }
 
-const { ..._ } = AirConstants;
+const { ..._g } = AirConstants;
 
 export type AirQualityData = {
     dateTime: string;
@@ -22,8 +22,8 @@ export function dummyAirQualityData() {
     return {
         dateTime: StringGenerator.generateDateString(),
         regionCode: StringGenerator.generateCountryCode(),
-        indexes: UtilGenerator.generateMultipleObjects(dummyAqi, _.DUMMY_OBJECTS_ARRAY_LENGTH),
-        pollutants: UtilGenerator.generateMultipleObjects(dummyAirPollutant, _.DUMMY_OBJECTS_ARRAY_LENGTH),
+        indexes: UtilGenerator.generateMultipleObjects(dummyAqi, _g.DUMMY_OBJECTS_ARRAY_LENGTH),
+        pollutants: UtilGenerator.generateMultipleObjects(dummyAirPollutant, _g.DUMMY_OBJECTS_ARRAY_LENGTH),
         healthRecommendations: dummyHealthRecommendations()
     } as AirQualityData;
 }
@@ -39,7 +39,7 @@ export type Aqi = {
 };
 
 export function dummyAqi() {
-    const AQI_SCORE = NumberGenerator.generateInt(_.AQI_MAX_VALUE + 1);
+    const AQI_SCORE = NumberGenerator.generateInt(_g.AQI_MAX_VALUE + 1);
     return {
         code: StringGenerator.generateWord(),
         displayName: StringGenerator.generateWord(),
@@ -60,10 +60,10 @@ export type Color = {
 
 export function dummyColor() {
     return {
-        red: NumberGenerator.generateInt(_.RGB_MAX_VALUE + 1),
-        green: NumberGenerator.generateInt(_.RGB_MAX_VALUE + 1),
-        blue: NumberGenerator.generateInt(_.RGB_MAX_VALUE + 1),
-        alpha: NumberGenerator.generateDouble(_.ALPHA_MAX_VALUE)
+        red: NumberGenerator.generateInt(_g.RGB_MAX_VALUE + 1),
+        green: NumberGenerator.generateInt(_g.RGB_MAX_VALUE + 1),
+        blue: NumberGenerator.generateInt(_g.RGB_MAX_VALUE + 1),
+        alpha: NumberGenerator.generateDouble(_g.ALPHA_MAX_VALUE)
     };
 }
 
@@ -105,7 +105,7 @@ export type Concentration = {
 export function dummyConcentration() {
     return {
         units: dummyUnit(),
-        value: NumberGenerator.generateDouble(_.CONCENTRATION_MAX)
+        value: NumberGenerator.generateDouble(_g.CONCENTRATION_MAX)
     } as Concentration;
 }
 
