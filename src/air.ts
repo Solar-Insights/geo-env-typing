@@ -1,4 +1,4 @@
-import { NumberGenerator, StringGenerator, UtilGenerator } from "./generators";
+import { NumberGenerator, StringGenerator, UtilGenerator } from "./generator";
 
 export namespace AirConstants {
     export const DUMMY_OBJECTS_ARRAY_LENGTH = 5;

@@ -1,4 +1,4 @@
-import { NumberGenerator, StringGenerator, UtilGenerator } from "./generators";
+import { NumberGenerator, StringGenerator, UtilGenerator } from "./generator";
 import { LatitudeLongitude, dummyLatitudeLongitude } from "./geo";
 
 export namespace SolarConstants {

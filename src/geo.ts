@@ -1,4 +1,4 @@
-import { NumberGenerator, NumberGeneratorConstants as NbConst } from "./generators";
+import { NumberGenerator, NumberGeneratorConstants as NbConst } from "./generator";
 
 export type Coordinates = LatLng | LatitudeLongitude | Cartesian;
 
