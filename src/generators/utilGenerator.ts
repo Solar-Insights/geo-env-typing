@@ -1,4 +1,5 @@
 import { faker } from "@faker-js/faker";
+import { isEqual } from "lodash";
 import NumberGenerator from "./numberGenerator";
 
 export namespace UtilGeneratorConstants {
@@ -42,8 +43,6 @@ export default class UtilGenerator {
     }
 
     static identicalJsonStrings(object1: any, object2: any) {
-        return (
-            UtilGenerator.generateJsonStringFromObject(object1) === UtilGenerator.generateJsonStringFromObject(object2)
-        );
+        return isEqual(object1, object2);
     }
 }
